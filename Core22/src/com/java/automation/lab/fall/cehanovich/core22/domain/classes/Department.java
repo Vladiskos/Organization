@@ -3,6 +3,8 @@ package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 import com.java.automation.lab.fall.cehanovich.core22.domain.classes.humans.Employee;
 import com.java.automation.lab.fall.cehanovich.core22.domain.classes.humans.HeadOfDepartment;
 
+import java.util.Arrays;
+
 public class Department {
     private String name;
     private HeadOfDepartment headOfDepartment;
@@ -58,7 +60,7 @@ public class Department {
         }
         Department other = (Department) that;
         return name.equals(other.name) && headOfDepartment.equals(other.headOfDepartment) &&
-                employees.equals(other.employees);
+                Arrays.equals(employees, other.employees);
     }
 
     @Override

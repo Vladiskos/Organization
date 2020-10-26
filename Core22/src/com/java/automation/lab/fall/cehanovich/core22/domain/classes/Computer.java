@@ -66,7 +66,7 @@ public class Computer {
             return true;
         }
         Computer other = (Computer) that;
-        return id == other.id && isOn == other.isOn && model == other.model;
+        return id == other.id && isOn == other.isOn && model.equals(other.model);
     }
 
     @Override

@@ -59,8 +59,8 @@ public class Card {
             return true;
         }
         Card other = (Card) that;
-        return id == other.id && accessLevel == other.accessLevel && isActive == other.isActive &&
-               cipher == other.cipher;
+        return id == other.id && accessLevel.equals(other.accessLevel) && isActive == other.isActive &&
+                cipher.equals(other.cipher);
     }
 
     @Override

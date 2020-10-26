@@ -49,8 +49,8 @@ public abstract class AsymmetricCipher extends Cipher {
             return true;
         }
         AsymmetricCipher other = (AsymmetricCipher) that;
-        return text == other.text && ciphertext == other.ciphertext && publicKey == other.publicKey &&
-                privateKey == other.privateKey;
+        return text.equals(other.text) && ciphertext.equals(other.ciphertext) && publicKey.equals(other.publicKey) &&
+                privateKey.equals(other.privateKey);
     }
 
     @Override

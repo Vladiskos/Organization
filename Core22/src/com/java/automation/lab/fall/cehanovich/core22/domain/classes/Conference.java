@@ -54,6 +54,7 @@ public class Conference {
 
     public void holdConference(Employee employee, User user) {
         if (employee.getCard().getAccessLevel().equals(this.accessLevel) ||
+                user.getInvitation().getAccessLevel().equals(this.accessLevel) ||
                 employee.getCard().getAccessLevel().equals(AccessLevel.LEVEL_5)) {
             System.out.println("The conference will take place with users");
         } else {
@@ -82,8 +83,8 @@ public class Conference {
             return true;
         }
         Conference other = (Conference) that;
-        return information == other.information && accessLevel == other.accessLevel && date.equals(other.date) &&
-                room.equals(other.room);
+        return information.equals(other.information) && accessLevel.equals(other.accessLevel) &&
+                date.equals(other.date) && room.equals(other.room);
     }
 
     @Override

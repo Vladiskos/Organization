@@ -3,6 +3,8 @@ package com.java.automation.lab.fall.cehanovich.core22.domain.classes.data;
 import com.java.automation.lab.fall.cehanovich.core22.domain.classes.Card;
 import com.java.automation.lab.fall.cehanovich.core22.domain.enums.AccessLevel;
 
+import java.util.Arrays;
+
 public class CardData extends Data {
     private Card[] cards;
 
@@ -37,7 +39,8 @@ public class CardData extends Data {
             return true;
         }
         CardData other = (CardData) that;
-        return information.equals(other.information) && accessLevel == other.accessLevel && cards.equals(other.cards);
+        return information.equals(other.information) && accessLevel == other.accessLevel &&
+                Arrays.equals(cards,other.cards);
     }
 
     @Override

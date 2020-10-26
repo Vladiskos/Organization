@@ -52,7 +52,7 @@ public class AES extends SymmetricCipher {
             return true;
         }
         AES other = (AES) that;
-        return text == other.text && ciphertext == other.ciphertext && key == other.key;
+        return text.equals(other.text) && ciphertext.equals(other.ciphertext) && key.equals(other.key);
     }
 
     @Override

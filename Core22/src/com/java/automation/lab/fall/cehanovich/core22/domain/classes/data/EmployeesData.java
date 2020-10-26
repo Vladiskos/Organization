@@ -3,6 +3,8 @@ package com.java.automation.lab.fall.cehanovich.core22.domain.classes.data;
 import com.java.automation.lab.fall.cehanovich.core22.domain.classes.humans.Employee;
 import com.java.automation.lab.fall.cehanovich.core22.domain.enums.AccessLevel;
 
+import java.util.Arrays;
+
 
 public class EmployeesData extends Data {
     private Employee[] employees;
@@ -40,7 +42,7 @@ public class EmployeesData extends Data {
         }
         EmployeesData other = (EmployeesData) that;
         return information.equals(other.information) && accessLevel == other.accessLevel &&
-                employees.equals(other.employees);
+                Arrays.equals(employees, other.employees);
     }
 
     @Override

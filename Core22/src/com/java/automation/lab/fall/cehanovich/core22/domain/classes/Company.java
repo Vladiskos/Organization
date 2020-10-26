@@ -2,6 +2,8 @@ package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 
 import com.java.automation.lab.fall.cehanovich.core22.domain.classes.humans.Employee;
 
+import java.util.Arrays;
+
 public class Company {
     private Department[] departments;
     private Employee[] employees;
@@ -71,8 +73,8 @@ public class Company {
             return true;
         }
         Company other = (Company) that;
-        return departments.equals(other.departments) && employees.equals(other.employees) && server == other.server &&
-                employeeIndex == other.employeeIndex;
+        return Arrays.equals(departments, other.departments) && Arrays.equals(employees, other.employees) &&
+                server.equals(other.server) && employeeIndex == other.employeeIndex;
     }
 
     @Override

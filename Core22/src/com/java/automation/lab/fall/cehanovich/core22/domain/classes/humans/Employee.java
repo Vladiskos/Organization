@@ -1,6 +1,10 @@
 package com.java.automation.lab.fall.cehanovich.core22.domain.classes.humans;
 
 import com.java.automation.lab.fall.cehanovich.core22.domain.classes.Card;
+import com.java.automation.lab.fall.cehanovich.core22.domain.classes.Invitation;
+import com.java.automation.lab.fall.cehanovich.core22.domain.enums.AccessLevel;
+
+import java.util.Date;
 
 public abstract class Employee extends Human {
     protected int id;
@@ -39,6 +43,10 @@ public abstract class Employee extends Human {
 
     public void setCard(Card card) {
         this.card = card;
+    }
+
+    public Invitation createInvitation(String text, Date date) {
+        return new Invitation(text, this.card.getAccessLevel(), date);
     }
 
     @Override

@@ -3,6 +3,8 @@ package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 import com.java.automation.lab.fall.cehanovich.core22.domain.classes.humans.Employee;
 import com.java.automation.lab.fall.cehanovich.core22.domain.enums.AccessLevel;
 
+import java.util.Arrays;
+
 public class Room {
     private int number;
     private AccessLevel requiredAccessLevel;
@@ -65,7 +67,7 @@ public class Room {
         }
         Room other = (Room) that;
         return number == other.number && requiredAccessLevel.equals(other.requiredAccessLevel) &&
-                roomLimit == other.roomLimit && employees.equals(other.employees) && index == other.index;
+                roomLimit == other.roomLimit && Arrays.equals(employees, other.employees) && index == other.index;
     }
 
     @Override

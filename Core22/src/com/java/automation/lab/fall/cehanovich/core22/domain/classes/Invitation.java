@@ -57,7 +57,7 @@ public class Invitation {
             return true;
         }
         Invitation other = (Invitation) that;
-        return text == other.text && accessLevel == other.accessLevel && date == other.date;
+        return text.equals(other.text) && accessLevel.equals(other.accessLevel) && date.equals(other.date);
     }
 
     @Override

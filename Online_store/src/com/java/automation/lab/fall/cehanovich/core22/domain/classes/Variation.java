@@ -9,14 +9,14 @@ public class Variation {
     private int id;
     private Size size;
     private Color color;
-    private Product[] products;
+    private Product product;
     private int discount;
 
-    public Variation(int id, Size size, Color color, Product[] products, int discount) {
+    public Variation(int id, Size size, Color color, Product product, int discount) {
         this.id = id;
         this.size = size;
         this.color = color;
-        this.products = products;
+        this.product = product;
         this.discount = discount;
     }
 
@@ -44,12 +44,12 @@ public class Variation {
         this.color = color;
     }
 
-    public Product[] getProducts() {
-        return products;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProducts(Product[] products) {
-        this.products = products;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public int getDiscount() {
@@ -63,7 +63,7 @@ public class Variation {
 
     @Override
     public String toString() {
-        return "Variation {\nID: " + id + "Size: " + size + "Color: " + color + "Products: " + Arrays.toString(products)
+        return "Variation {\nID: " + id + "Size: " + size + "Color: " + color + "Products: " + product.toString()
                 + "Discount: " + discount + "\n}";
     }
 
@@ -80,10 +80,10 @@ public class Variation {
         }
         Variation other = (Variation) that;
         return id == other.id && size.equals(other.size) && color.equals(other.color) &&
-                Arrays.equals(products, other.products) && discount == other.discount;
+                product.equals(other.product) && discount == other.discount;
     }
     @Override
     public int hashCode() {
-        return id + size.hashCode() + color.hashCode() + products.hashCode() - discount;
+        return id + size.hashCode() + color.hashCode() + product.hashCode() - discount;
     }
 }

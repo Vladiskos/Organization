@@ -6,14 +6,19 @@ import java.util.Arrays;
 
 public class Basket {
     private Variation[] variations;
+    private int varCounter = 0;
     private int totalPrice;
     private PaymentMethod paymentMethod;
+    private PriceBook priceBook;
     private Coupon coupon;
+    private User user;
 
-    public Basket(Variation[] variations, int totalPrice, PaymentMethod paymentMethod, Coupon coupon) {
+    public Basket(Variation[] variations, int totalPrice, PaymentMethod paymentMethod, PriceBook priceBook,
+                  Coupon coupon) {
         this.variations = variations;
         this.totalPrice = totalPrice;
         this.paymentMethod = paymentMethod;
+        this.priceBook = priceBook;
         this.coupon = coupon;
     }
 
@@ -49,11 +54,59 @@ public class Basket {
         this.coupon = coupon;
     }
 
+    public PriceBook getPriceBook() {
+        return priceBook;
+    }
+
+    public void setPriceBook(PriceBook priceBook) {
+        this.priceBook = priceBook;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void addVariation(Variation variation) {
+        variations[varCounter] = variation;
+        varCounter++;
+    }
+
+    public void deleteVariation(int index) {
+        for (int i = index; i < variations.length; i++) {
+            variations[i] = variations[++i];
+        }
+        variations[varCounter - 1] = null;
+        varCounter--;
+    }
+
+    public Order createOrder() {
+
+        return new Order(this, "");
+    }
+
+    public int countTotalPrice() {
+        totalPrice = 0;
+        for (Variation variation : variations) {
+            for (Variation var : priceBook.getPriceAndProduct().keySet()) {
+                if (variation.equals(var)) {
+                    totalPrice += priceBook.getPriceAndProduct().get(variation) -
+                            (totalPrice / 100) * variation.getDiscount();
+                }
+            }
+        }
+        totalPrice -= (totalPrice / 100) * coupon.getDiscount();
+        return totalPrice;
+    }
 
     @Override
     public String toString() {
         return "Basket {\nVariations: " + Arrays.toString(variations) + "Total Price: " + totalPrice +
-                "PaymentMethod: " + paymentMethod + "Coupon: " + coupon.toString() + "\n}";
+                "PaymentMethod: " + paymentMethod + "Price book: " + priceBook.toString() + "Coupon: " +
+                coupon.toString() + "\n}";
     }
 
     @Override

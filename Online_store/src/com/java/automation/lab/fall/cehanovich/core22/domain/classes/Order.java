@@ -4,14 +4,10 @@ import java.util.Arrays;
 
 public class Order {
     private Basket basket;
-    private User user;
-    private String address;
     private String description;
 
-    public Order(Basket basket, User user, String address, String description) {
+    public Order(Basket basket, String description) {
         this.basket = basket;
-        this.user = user;
-        this.address = address;
         this.description = description;
     }
 
@@ -21,22 +17,6 @@ public class Order {
 
     public void setBasket(Basket basket) {
         this.basket = basket;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getDescription() {
@@ -50,8 +30,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order {\nBasket: " + basket.toString() + "User: " + user.toString() + "Address: " + address +
-                "Description: " + description + "\n}";
+        return "Order {\nBasket: " + basket.toString() + "Description: " + description + "\n}";
     }
 
     @Override
@@ -66,12 +45,11 @@ public class Order {
             return true;
         }
         Order other = (Order) that;
-        return basket.equals(other.basket) && user.equals(other.user) && address.equals(other.address) &&
-                description.equals(other.description);
+        return basket.equals(other.basket) && description.equals(other.description);
     }
     @Override
     public int hashCode() {
-        return basket.hashCode() + user.hashCode() + address.hashCode() - description.hashCode();
+        return basket.hashCode() + description.hashCode();
     }
 
 }

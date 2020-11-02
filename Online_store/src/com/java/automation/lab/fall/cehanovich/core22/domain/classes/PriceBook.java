@@ -11,10 +11,10 @@ public class PriceBook {
     private boolean enabled;
     private Date validFrom;
     private Date validTo;
-    private Map<Integer,Variation> priceAndProduct;
+    private Map<Variation,Integer> priceAndProduct;
 
     public PriceBook(Currency currency, boolean enabled, Date validFrom, Date validTo,
-                     HashMap<Integer,Variation> priceAndProduct) {
+                     HashMap<Variation,Integer> priceAndProduct) {
         this.currency = currency;
         this.enabled = enabled;
         this.validFrom = validFrom;
@@ -54,11 +54,11 @@ public class PriceBook {
         this.validTo = validTo;
     }
 
-    public Map<Integer, Variation> getPriceAndProduct() {
+    public Map<Variation, Integer> getPriceAndProduct() {
         return priceAndProduct;
     }
 
-    public void setPriceAndProduct(Map<Integer, Variation> priceAndProduct) {
+    public void setPriceAndProduct(Map<Variation, Integer> priceAndProduct) {
         this.priceAndProduct = priceAndProduct;
     }
 

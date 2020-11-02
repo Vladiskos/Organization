@@ -69,6 +69,7 @@ public class Subcategory {
         return id == other.id && discount == other.discount && name.equals(other.name) &&
                 Arrays.equals(products, other.products);
     }
+
     @Override
     public int hashCode() {
         return id + name.hashCode() + Arrays.hashCode(products);

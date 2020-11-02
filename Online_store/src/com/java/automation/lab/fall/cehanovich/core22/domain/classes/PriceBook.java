@@ -15,7 +15,7 @@ public class PriceBook {
     private Map<Variation, BigDecimal> priceAndProduct;
 
     public PriceBook(Currency currency, boolean enabled, Date validFrom, Date validTo,
-                     HashMap<Variation,BigDecimal> priceAndProduct) {
+                     HashMap<Variation, BigDecimal> priceAndProduct) {
         this.currency = currency;
         this.enabled = enabled;
         this.validFrom = validFrom;
@@ -85,6 +85,7 @@ public class PriceBook {
         return currency.equals(other.currency) && enabled == other.enabled && validFrom.equals(other.validFrom) &&
                 validTo.equals(other.validTo) && priceAndProduct.equals(other.priceAndProduct);
     }
+
     @Override
     public int hashCode() {
         return currency.hashCode() + validFrom.hashCode() + validTo.hashCode() - priceAndProduct.hashCode();

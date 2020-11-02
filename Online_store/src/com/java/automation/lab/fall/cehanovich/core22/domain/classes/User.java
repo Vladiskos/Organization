@@ -82,6 +82,7 @@ public abstract class User {
         return id == other.id && firstname.equals(other.firstname) && lastname.equals(other.lastname) &&
                 contactNumber.equals(other.contactNumber) && email.equals(other.email);
     }
+
     @Override
     public int hashCode() {
         return id + firstname.hashCode() + lastname.hashCode() + contactNumber.hashCode();

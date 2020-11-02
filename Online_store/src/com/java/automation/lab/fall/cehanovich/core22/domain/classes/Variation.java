@@ -82,6 +82,7 @@ public class Variation {
         return id == other.id && size.equals(other.size) && color.equals(other.color) &&
                 product.equals(other.product) && discount == other.discount;
     }
+
     @Override
     public int hashCode() {
         return id + size.hashCode() + color.hashCode() + product.hashCode() - discount;

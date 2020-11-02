@@ -66,6 +66,7 @@ public class Product {
         return code == other.code && name.equals(other.name) && brand.equals(other.brand) &&
                 description.equals(other.description);
     }
+
     @Override
     public int hashCode() {
         return code + name.hashCode() + brand.hashCode() - description.hashCode();

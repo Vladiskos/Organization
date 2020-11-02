@@ -40,7 +40,7 @@ public class Basket {
         return totalPrice;
     }
 
-    public void setTotalPrice(BigDecimal  totalPrice) {
+    public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
     }
 
@@ -106,11 +106,11 @@ public class Basket {
     }
 
     public Order createOrder() {
-        return new Order(this, "", new BigDecimal(5),totalPrice);
+        return new Order(this, "", new BigDecimal(5), totalPrice);
     }
 
     public ShippingInfo createShipping(Date date, String address) {
-        return new ShippingInfo(date, address, paymentMethod);
+        return new ShippingInfo(date, address, user);
     }
 
     public BigDecimal countTotalPrice() {
@@ -122,12 +122,12 @@ public class Basket {
                 if (variation.equals(var)) {
                     totalPrice = totalPrice.add(priceBook.getPriceAndProduct().get(variation)
                             .subtract(priceBook.getPriceAndProduct().get(variation)
-                            .divide(new BigDecimal(100)))
+                                    .divide(new BigDecimal(100)))
                             .multiply(new BigDecimal(variation.getDiscount())));
                 }
             }
         }
-        totalPrice = (totalPrice.divide(new BigDecimal(100),2)).
+        totalPrice = (totalPrice.divide(new BigDecimal(100), 2)).
                 multiply(new BigDecimal(coupon.getDiscount()));
         return totalPrice;
     }

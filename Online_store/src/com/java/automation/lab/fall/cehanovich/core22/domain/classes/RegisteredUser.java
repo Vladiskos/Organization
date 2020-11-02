@@ -75,6 +75,7 @@ public class RegisteredUser extends User {
                 Arrays.equals(savedCards, other.savedCards) && address.equals(other.address) &&
                 discount == other.discount && birthday.equals(other.birthday);
     }
+
     @Override
     public int hashCode() {
         return id + firstname.hashCode() + lastname.hashCode() + contactNumber.hashCode() + address.hashCode();

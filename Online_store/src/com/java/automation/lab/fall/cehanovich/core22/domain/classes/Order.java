@@ -55,6 +55,7 @@ public class Order {
         totalPrice = totalPrice.add(totalPrice.divide(new BigDecimal(100)).multiply(tax));
         return totalPrice;
     }
+
     @Override
     public String toString() {
         return "Order {\nBasket: " + basket.toString() + "Description: " + description + "\n}";
@@ -74,6 +75,7 @@ public class Order {
         Order other = (Order) that;
         return basket.equals(other.basket) && description.equals(other.description);
     }
+
     @Override
     public int hashCode() {
         return basket.hashCode() + description.hashCode();

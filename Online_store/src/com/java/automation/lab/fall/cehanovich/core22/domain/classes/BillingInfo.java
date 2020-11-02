@@ -1,17 +1,17 @@
 package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 
-import com.java.automation.lab.fall.cehanovich.core22.domain.enums.Payment;
+import com.java.automation.lab.fall.cehanovich.core22.domain.enums.PaymentType;
 
 import java.math.BigDecimal;
 
 public class BillingInfo {
     private BigDecimal totalPrice;
-    private Payment payment;
+    private PaymentType paymentType;
     private String information;
 
-    public BillingInfo(BigDecimal totalPrice, Payment payment, String information) {
+    public BillingInfo(BigDecimal totalPrice, PaymentType paymentType, String information) {
         this.totalPrice = totalPrice;
-        this.payment = payment;
+        this.paymentType = paymentType;
         this.information = information;
     }
 
@@ -23,12 +23,12 @@ public class BillingInfo {
         this.totalPrice = totalPrice;
     }
 
-    public Payment getPayment() {
-        return payment;
+    public PaymentType getPayment() {
+        return paymentType;
     }
 
-    public void setPayment(Payment payment) {
-        this.payment = payment;
+    public void setPayment(PaymentType paymentType) {
+        this.paymentType = paymentType;
     }
 
     public String getInformation() {
@@ -42,7 +42,7 @@ public class BillingInfo {
 
     @Override
     public String toString() {
-        return "Billing info{\nTotal price " + totalPrice.toString() + "Payment: " + payment + "information: " +
+        return "Billing info{\nTotal price " + totalPrice.toString() + "Payment: " + paymentType + "information: " +
                 information + "\n}";
     }
 
@@ -59,12 +59,12 @@ public class BillingInfo {
             return true;
         }
         BillingInfo other = (BillingInfo) that;
-        return totalPrice.equals(other.totalPrice) && payment.equals(other.payment) &&
+        return totalPrice.equals(other.totalPrice) && paymentType.equals(other.paymentType) &&
                 information.equals(other.information);
     }
 
     @Override
     public int hashCode() {
-        return information.hashCode() + totalPrice.hashCode() + payment.hashCode();
+        return information.hashCode() + totalPrice.hashCode() + paymentType.hashCode();
     }
 }

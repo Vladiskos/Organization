@@ -5,12 +5,12 @@ import java.util.Date;
 public class ShippingInfo {
     private Date date;
     private String address;
-    private PaymentMethod paymentMethod;
+    private User customerInfo;
 
-    public ShippingInfo(Date date, String address, PaymentMethod paymentMethod) {
+    public ShippingInfo(Date date, String address, User customerInfo) {
         this.date = date;
         this.address = address;
-        this.paymentMethod = paymentMethod;
+        this.customerInfo = customerInfo;
     }
 
     public Date getDate() {
@@ -29,19 +29,19 @@ public class ShippingInfo {
         this.address = address;
     }
 
-    public PaymentMethod getPaymentMethod() {
-        return paymentMethod;
+    public User getPaymentMethod() {
+        return customerInfo;
     }
 
-    public void setPaymentMethod(PaymentMethod paymentMethod) {
-        this.paymentMethod = paymentMethod;
+    public void setPaymentMethod(User customerInfo) {
+        this.customerInfo = customerInfo;
     }
 
 
     @Override
     public String toString() {
-        return "Shipping info {\nDate: " + date.toString() + "Address: " + address + "paymentMethod: " +
-                paymentMethod.toString() + "\n}";
+        return "Shipping info {\nDate: " + date.toString() + "Address: " + address + "Customer info: " +
+                customerInfo.toString() + "\n}";
     }
 
     @Override
@@ -56,11 +56,11 @@ public class ShippingInfo {
             return true;
         }
         ShippingInfo other = (ShippingInfo) that;
-        return date.equals(other.date) && address.equals(other.address) && paymentMethod.equals(other.paymentMethod);
+        return date.equals(other.date) && address.equals(other.address) && customerInfo.equals(other.customerInfo);
     }
 
     @Override
     public int hashCode() {
-        return paymentMethod.hashCode() + address.hashCode() + date.hashCode();
+        return customerInfo.hashCode() + address.hashCode() + date.hashCode();
     }
 }

@@ -1,25 +1,31 @@
 package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 
-import com.java.automation.lab.fall.cehanovich.core22.domain.enums.PaymentMethod;
-
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Arrays;
+import java.util.Date;
 
 public class Basket {
     private Variation[] variations;
     private int varCounter = 0;
-    private int totalPrice;
+    private BigDecimal totalPrice;
     private PaymentMethod paymentMethod;
     private PriceBook priceBook;
     private Coupon coupon;
     private User user;
+    private BillingInfo billingInfo;
+    private ShippingInfo shippingInfo;
 
-    public Basket(Variation[] variations, int totalPrice, PaymentMethod paymentMethod, PriceBook priceBook,
-                  Coupon coupon) {
+    public Basket(Variation[] variations, BigDecimal totalPrice, PaymentMethod paymentMethod, PriceBook priceBook,
+                  Coupon coupon, BillingInfo billingInfo, ShippingInfo shippingInfo) {
         this.variations = variations;
         this.totalPrice = totalPrice;
         this.paymentMethod = paymentMethod;
         this.priceBook = priceBook;
         this.coupon = coupon;
+        this.billingInfo = billingInfo;
+        this.shippingInfo = shippingInfo;
+
     }
 
     public Variation[] getVariations() {
@@ -30,11 +36,11 @@ public class Basket {
         this.variations = variations;
     }
 
-    public int getTotalPrice() {
+    public BigDecimal getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(int totalPrice) {
+    public void setTotalPrice(BigDecimal  totalPrice) {
         this.totalPrice = totalPrice;
     }
 
@@ -70,6 +76,22 @@ public class Basket {
         this.user = user;
     }
 
+    public BillingInfo getBillingInfo() {
+        return billingInfo;
+    }
+
+    public void setBillingInfo(BillingInfo billingInfo) {
+        this.billingInfo = billingInfo;
+    }
+
+    public ShippingInfo getShippingInfo() {
+        return shippingInfo;
+    }
+
+    public void setShippingInfo(ShippingInfo shippingInfo) {
+        this.shippingInfo = shippingInfo;
+    }
+
     public void addVariation(Variation variation) {
         variations[varCounter] = variation;
         varCounter++;
@@ -84,21 +106,29 @@ public class Basket {
     }
 
     public Order createOrder() {
-
-        return new Order(this, "");
+        return new Order(this, "", new BigDecimal(5),totalPrice);
     }
 
-    public int countTotalPrice() {
-        totalPrice = 0;
+    public ShippingInfo createShipping(Date date, String address) {
+        return new ShippingInfo(date, address, paymentMethod);
+    }
+
+    public BigDecimal countTotalPrice() {
+        totalPrice = new BigDecimal(0);
+        totalPrice = totalPrice.setScale(2, RoundingMode.CEILING);
+
         for (Variation variation : variations) {
             for (Variation var : priceBook.getPriceAndProduct().keySet()) {
                 if (variation.equals(var)) {
-                    totalPrice += priceBook.getPriceAndProduct().get(variation) -
-                            (totalPrice / 100) * variation.getDiscount();
+                    totalPrice = totalPrice.add(priceBook.getPriceAndProduct().get(variation)
+                            .subtract(priceBook.getPriceAndProduct().get(variation)
+                            .divide(new BigDecimal(100)))
+                            .multiply(new BigDecimal(variation.getDiscount())));
                 }
             }
         }
-        totalPrice -= (totalPrice / 100) * coupon.getDiscount();
+        totalPrice = (totalPrice.divide(new BigDecimal(100),2)).
+                multiply(new BigDecimal(coupon.getDiscount()));
         return totalPrice;
     }
 
@@ -121,13 +151,13 @@ public class Basket {
             return true;
         }
         Basket other = (Basket) that;
-        return Arrays.equals(variations, other.variations) && totalPrice == other.totalPrice &&
+        return Arrays.equals(variations, other.variations) && totalPrice.equals(other.totalPrice) &&
                 paymentMethod.equals(other.paymentMethod) && coupon.equals(other.coupon);
     }
 
     @Override
     public int hashCode() {
-        return Arrays.hashCode(variations) + totalPrice - paymentMethod.hashCode() + coupon.hashCode();
+        return Arrays.hashCode(variations) + totalPrice.hashCode() - paymentMethod.hashCode() + coupon.hashCode();
     }
 
 }

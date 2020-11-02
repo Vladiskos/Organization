@@ -2,6 +2,7 @@ package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 
 import com.java.automation.lab.fall.cehanovich.core22.domain.enums.Currency;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,10 +12,10 @@ public class PriceBook {
     private boolean enabled;
     private Date validFrom;
     private Date validTo;
-    private Map<Variation,Integer> priceAndProduct;
+    private Map<Variation, BigDecimal> priceAndProduct;
 
     public PriceBook(Currency currency, boolean enabled, Date validFrom, Date validTo,
-                     HashMap<Variation,Integer> priceAndProduct) {
+                     HashMap<Variation,BigDecimal> priceAndProduct) {
         this.currency = currency;
         this.enabled = enabled;
         this.validFrom = validFrom;
@@ -54,11 +55,11 @@ public class PriceBook {
         this.validTo = validTo;
     }
 
-    public Map<Variation, Integer> getPriceAndProduct() {
+    public Map<Variation, BigDecimal> getPriceAndProduct() {
         return priceAndProduct;
     }
 
-    public void setPriceAndProduct(Map<Variation, Integer> priceAndProduct) {
+    public void setPriceAndProduct(Map<Variation, BigDecimal> priceAndProduct) {
         this.priceAndProduct = priceAndProduct;
     }
 

@@ -2,15 +2,17 @@ package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 public class RegisteredUser extends User {
-    private BankCard[] savedCards;
+    private Set<BankCard> savedCards;
     private String address;
     private int discount;
     private Date birthday;
 
     public RegisteredUser(int id, String firstname, String lastname, String contactNumber, String email,
-                          BankCard[] savedCards, String address, int discount, Date birthday) {
+                          HashSet<BankCard> savedCards, String address, int discount, Date birthday) {
         super(id, firstname, lastname, contactNumber, email);
         this.savedCards = savedCards;
         this.address = address;
@@ -18,11 +20,11 @@ public class RegisteredUser extends User {
         this.birthday = birthday;
     }
 
-    public BankCard[] getSavedCards() {
+    public Set<BankCard> getSavedCards() {
         return savedCards;
     }
 
-    public void setSavedCards(BankCard[] savedCards) {
+    public void setSavedCards(Set<BankCard> savedCards) {
         this.savedCards = savedCards;
     }
 
@@ -54,7 +56,7 @@ public class RegisteredUser extends User {
     @Override
     public String toString() {
         return "RegisteredUser {\nID: " + id + "Firstname: " + firstname + "Lastname: " + lastname + "contactNumber: " +
-                contactNumber + "Email: " + email + "Saved cards: " + Arrays.toString(savedCards) + "Address: " +
+                contactNumber + "Email: " + email + "Saved cards: " + savedCards.toString() + "Address: " +
                 address + "Discount: " + discount + "Birthday: " + birthday + "\n}";
     }
 
@@ -72,7 +74,7 @@ public class RegisteredUser extends User {
         RegisteredUser other = (RegisteredUser) that;
         return id == other.id && firstname.equals(other.firstname) && lastname.equals(other.lastname) &&
                 contactNumber.equals(other.contactNumber) && email.equals(other.email) &&
-                Arrays.equals(savedCards, other.savedCards) && address.equals(other.address) &&
+                savedCards.equals(other.savedCards) && address.equals(other.address) &&
                 discount == other.discount && birthday.equals(other.birthday);
     }
 

@@ -2,11 +2,13 @@ package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 public class Basket {
-    private Variation[] variations;
+    private List<Variation> variations;
     private int varCounter = 0;
     private BigDecimal totalPrice;
     private PaymentMethod paymentMethod;
@@ -16,7 +18,7 @@ public class Basket {
     private BillingInfo billingInfo;
     private ShippingInfo shippingInfo;
 
-    public Basket(Variation[] variations, BigDecimal totalPrice, PaymentMethod paymentMethod, PriceBook priceBook,
+    public Basket(ArrayList<Variation> variations, BigDecimal totalPrice, PaymentMethod paymentMethod, PriceBook priceBook,
                   Coupon coupon, BillingInfo billingInfo, ShippingInfo shippingInfo) {
         this.variations = variations;
         this.totalPrice = totalPrice;
@@ -28,11 +30,11 @@ public class Basket {
 
     }
 
-    public Variation[] getVariations() {
+    public List<Variation> getVariations() {
         return variations;
     }
 
-    public void setVariations(Variation[] variations) {
+    public void setVariations(List<Variation> variations) {
         this.variations = variations;
     }
 
@@ -93,15 +95,15 @@ public class Basket {
     }
 
     public void addVariation(Variation variation) {
-        variations[varCounter] = variation;
+        variations.set(varCounter,variation);
         varCounter++;
     }
 
     public void deleteVariation(int index) {
-        for (int i = index; i < variations.length; i++) {
-            variations[i] = variations[++i];
+        for (int i = index; i < variations.size(); i++) {
+            variations.set(i,variations.get(++i));
         }
-        variations[varCounter - 1] = null;
+        variations.set(varCounter-1,null);
         varCounter--;
     }
 
@@ -134,7 +136,7 @@ public class Basket {
 
     @Override
     public String toString() {
-        return "Basket {\nVariations: " + Arrays.toString(variations) + "Total Price: " + totalPrice +
+        return "Basket {\nVariations: " + variations.toString() + "Total Price: " + totalPrice +
                 "PaymentMethod: " + paymentMethod + "Price book: " + priceBook.toString() + "Coupon: " +
                 coupon.toString() + "\n}";
     }
@@ -151,13 +153,13 @@ public class Basket {
             return true;
         }
         Basket other = (Basket) that;
-        return Arrays.equals(variations, other.variations) && totalPrice.equals(other.totalPrice) &&
+        return variations.equals(other.variations) && totalPrice.equals(other.totalPrice) &&
                 paymentMethod.equals(other.paymentMethod) && coupon.equals(other.coupon);
     }
 
     @Override
     public int hashCode() {
-        return Arrays.hashCode(variations) + totalPrice.hashCode() - paymentMethod.hashCode() + coupon.hashCode();
+        return variations.hashCode() + totalPrice.hashCode() - paymentMethod.hashCode() + coupon.hashCode();
     }
 
 }

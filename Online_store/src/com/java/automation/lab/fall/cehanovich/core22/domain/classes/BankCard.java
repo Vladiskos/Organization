@@ -1,22 +1,21 @@
 package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 
-import com.java.automation.lab.fall.cehanovich.core22.domain.interfaces.PaymentMethod;
+import com.java.automation.lab.fall.cehanovich.core22.domain.classes.PaymentMethod;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.regex.Pattern;
 
-public class BankCard implements PaymentMethod {
+public class BankCard extends PaymentMethod {
     private String number;
     private String validity;
     private String cvc;
-    private BigDecimal balance;
 
     public BankCard(String number, String validity, String cvc, BigDecimal balance) throws Exception {
+        super(balance);
         setNumber(number);
         setValidity(validity);
         setCvc(cvc);
-        this.balance = balance;
     }
 
     public String getNumber() {
@@ -75,11 +74,11 @@ public class BankCard implements PaymentMethod {
         if (cvc.length() == 3) {
             for (char i : cvc.toCharArray()) {
                 if (i < '0' || i > '9')
-                    throw new IllegalArgumentException("Illegal card number!");
+                    throw new IllegalArgumentException("Illegal card cvv!");
             }
             this.cvc = cvc;
         } else {
-            throw new IllegalArgumentException("Illegal card number!");
+            throw new IllegalArgumentException("Illegal card cvv!");
         }
     }
 

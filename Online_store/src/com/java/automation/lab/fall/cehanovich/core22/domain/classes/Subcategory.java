@@ -45,7 +45,7 @@ public class Subcategory {
         return products;
     }
 
-    public void setProducts(Set<Product> products) {
+    public void setProducts(HashSet<Product> products) {
         this.products = products;
     }
 

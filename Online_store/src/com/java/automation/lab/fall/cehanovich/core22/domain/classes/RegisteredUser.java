@@ -24,7 +24,7 @@ public class RegisteredUser extends User {
         return savedCards;
     }
 
-    public void setSavedCards(Set<BankCard> savedCards) {
+    public void setSavedCards(HashSet<BankCard> savedCards) {
         this.savedCards = savedCards;
     }
 

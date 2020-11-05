@@ -3,6 +3,7 @@ package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 import com.java.automation.lab.fall.cehanovich.core22.domain.enums.Currency;
 
 import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,11 +11,11 @@ import java.util.Map;
 public class PriceBook {
     private Currency currency;
     private boolean enabled;
-    private Date validFrom;
-    private Date validTo;
+    private OffsetDateTime validFrom;
+    private OffsetDateTime validTo;
     private Map<Variation, BigDecimal> priceAndProduct;
 
-    public PriceBook(Currency currency, boolean enabled, Date validFrom, Date validTo,
+    public PriceBook(Currency currency, boolean enabled, OffsetDateTime validFrom, OffsetDateTime validTo,
                      HashMap<Variation, BigDecimal> priceAndProduct) {
         this.currency = currency;
         this.enabled = enabled;
@@ -39,19 +40,19 @@ public class PriceBook {
         this.enabled = enabled;
     }
 
-    public Date getValidFrom() {
+    public OffsetDateTime getValidFrom() {
         return validFrom;
     }
 
-    public void setValidFrom(Date validFrom) {
+    public void setValidFrom(OffsetDateTime validFrom) {
         this.validFrom = validFrom;
     }
 
-    public Date getValidTo() {
+    public OffsetDateTime getValidTo() {
         return validTo;
     }
 
-    public void setValidTo(Date validTo) {
+    public void setValidTo(OffsetDateTime validTo) {
         this.validTo = validTo;
     }
 
@@ -59,7 +60,7 @@ public class PriceBook {
         return priceAndProduct;
     }
 
-    public void setPriceAndProduct(Map<Variation, BigDecimal> priceAndProduct) {
+    public void setPriceAndProduct(HashMap<Variation, BigDecimal> priceAndProduct) {
         this.priceAndProduct = priceAndProduct;
     }
 

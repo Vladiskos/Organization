@@ -1,31 +1,32 @@
 package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 
+import java.time.OffsetDateTime;
 import java.util.Date;
 
 public class ShippingInfo {
-    private Date date;
-    private String address;
+    private OffsetDateTime date;
+    private Address address;
     private User customerInfo;
 
-    public ShippingInfo(Date date, String address, User customerInfo) {
+    public ShippingInfo(OffsetDateTime date, Address address, User customerInfo) {
         this.date = date;
         this.address = address;
         this.customerInfo = customerInfo;
     }
 
-    public Date getDate() {
+    public OffsetDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(OffsetDateTime date) {
         this.date = date;
     }
 
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 

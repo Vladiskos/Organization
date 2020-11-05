@@ -10,11 +10,11 @@ public class Order {
     private BigDecimal tax;
     private BigDecimal totalPrice;
 
-    public Order(Basket basket, String description, BigDecimal tax, BigDecimal totalPrice) {
+    public Order(Basket basket, String description, BigDecimal tax) {
         this.basket = basket;
         this.description = description;
         this.tax = tax;
-        this.totalPrice = totalPrice;
+        this.totalPrice = basket.getTotalPrice();
     }
 
     public Basket getBasket() {

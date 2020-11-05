@@ -1,9 +1,8 @@
 package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 
-import com.java.automation.lab.fall.cehanovich.core22.domain.interfaces.PaymentMethod;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -36,7 +35,7 @@ public class Basket {
         return variations;
     }
 
-    public void setVariations(List<Variation> variations) {
+    public void setVariations(ArrayList<Variation> variations) {
         this.variations = variations;
     }
 
@@ -109,11 +108,15 @@ public class Basket {
         varCounter--;
     }
 
-    public Order createOrder() {
-        return new Order(this, "", new BigDecimal(5), totalPrice);
+    public Order createOrder() throws Exception {
+        if (paymentMethod.balance.compareTo(totalPrice) < 0) {
+            throw new IllegalArgumentException("Not enough funds to pay!");
+        } else {
+            return new Order(this, "", new BigDecimal(5));
+        }
     }
 
-    public ShippingInfo createShipping(Date date, String address) {
+    public ShippingInfo createShipping(OffsetDateTime date, Address address) {
         return new ShippingInfo(date, address, user);
     }
 

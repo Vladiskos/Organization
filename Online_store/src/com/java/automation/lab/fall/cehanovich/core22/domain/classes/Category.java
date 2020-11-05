@@ -27,7 +27,7 @@ public class Category {
         return subcategories;
     }
 
-    public void setSubcategories(Set<Subcategory> subcategories) {
+    public void setSubcategories(HashSet<Subcategory> subcategories) {
         this.subcategories = subcategories;
     }
 

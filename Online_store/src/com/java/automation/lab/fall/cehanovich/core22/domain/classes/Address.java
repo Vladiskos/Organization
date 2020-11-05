@@ -50,8 +50,8 @@ public class Address {
 
     @Override
     public String toString() {
-        return "Address {\nCity: " + city + "Street: " + street + "House: " + house + "Apartment: " + apartment +
-                "\n}";
+        return "\nAddress { City: " + city + "; Street: " + street + "; House: " + house + "; Apartment: " + apartment +
+                " }";
     }
 
     @Override

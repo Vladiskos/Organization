@@ -19,7 +19,7 @@ public class Basket {
     private BillingInfo billingInfo;
     private ShippingInfo shippingInfo;
 
-    public Basket(ArrayList<Variation> variations, BigDecimal totalPrice, PaymentMethod paymentMethod, PriceBook priceBook,
+    public Basket(List<Variation> variations, BigDecimal totalPrice, PaymentMethod paymentMethod, PriceBook priceBook,
                   Coupon coupon, BillingInfo billingInfo, ShippingInfo shippingInfo) {
         this.variations = variations;
         this.totalPrice = totalPrice;
@@ -35,7 +35,7 @@ public class Basket {
         return variations;
     }
 
-    public void setVariations(ArrayList<Variation> variations) {
+    public void setVariations(List<Variation> variations) {
         this.variations = variations;
     }
 

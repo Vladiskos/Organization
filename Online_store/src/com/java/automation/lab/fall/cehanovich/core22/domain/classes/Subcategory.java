@@ -10,7 +10,7 @@ public class Subcategory {
     private String name;
     private Set<Product> products;
 
-    public Subcategory(int id, int discount, String name, HashSet<Product> products) {
+    public Subcategory(int id, int discount, String name, Set<Product> products) {
         this.id = id;
         this.discount = discount;
         this.name = name;
@@ -45,7 +45,7 @@ public class Subcategory {
         return products;
     }
 
-    public void setProducts(HashSet<Product> products) {
+    public void setProducts(Set<Product> products) {
         this.products = products;
     }
 

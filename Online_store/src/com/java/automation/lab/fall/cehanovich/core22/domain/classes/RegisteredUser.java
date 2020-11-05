@@ -1,5 +1,7 @@
 package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
@@ -7,16 +9,16 @@ import java.util.Set;
 
 public class RegisteredUser extends User {
     private Set<BankCard> savedCards;
-    private String address;
-    private int discount;
-    private Date birthday;
+    private Address address;
+    private int discountPercent;
+    private LocalDate birthday;
 
     public RegisteredUser(int id, String firstname, String lastname, String contactNumber, String email,
-                          HashSet<BankCard> savedCards, String address, int discount, Date birthday) {
+                          Set<BankCard> savedCards, Address address, int discountPercent, LocalDate birthday) {
         super(id, firstname, lastname, contactNumber, email);
         this.savedCards = savedCards;
         this.address = address;
-        this.discount = discount;
+        this.discountPercent = discountPercent;
         this.birthday = birthday;
     }
 
@@ -24,31 +26,31 @@ public class RegisteredUser extends User {
         return savedCards;
     }
 
-    public void setSavedCards(HashSet<BankCard> savedCards) {
+    public void setSavedCards(Set<BankCard> savedCards) {
         this.savedCards = savedCards;
     }
 
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 
     public int getDiscount() {
-        return discount;
+        return discountPercent;
     }
 
     public void setDiscount(int discount) {
-        this.discount = discount;
+        this.discountPercent = discount;
     }
 
-    public Date getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 
@@ -57,7 +59,7 @@ public class RegisteredUser extends User {
     public String toString() {
         return "RegisteredUser {\nID: " + id + "Firstname: " + firstname + "Lastname: " + lastname + "contactNumber: " +
                 contactNumber + "Email: " + email + "Saved cards: " + savedCards.toString() + "Address: " +
-                address + "Discount: " + discount + "Birthday: " + birthday + "\n}";
+                address + "Discount: " + discountPercent + "% Birthday: " + birthday + "\n}";
     }
 
     @Override
@@ -75,7 +77,7 @@ public class RegisteredUser extends User {
         return id == other.id && firstname.equals(other.firstname) && lastname.equals(other.lastname) &&
                 contactNumber.equals(other.contactNumber) && email.equals(other.email) &&
                 savedCards.equals(other.savedCards) && address.equals(other.address) &&
-                discount == other.discount && birthday.equals(other.birthday);
+                discountPercent == other.discountPercent && birthday.equals(other.birthday);
     }
 
     @Override

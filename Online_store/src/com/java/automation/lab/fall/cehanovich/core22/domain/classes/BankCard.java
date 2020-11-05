@@ -92,7 +92,7 @@ public class BankCard extends PaymentMethod {
 
     @Override
     public String toString() {
-        return "BankCard {\nNumber: " + number + "Validity: " + validity + "CVC: " + cvc + "\n}";
+        return "BankCard {\nNumber: " + number + " Validity: " + validity + " CVC: " + cvc + "\n}";
     }
 
     @Override

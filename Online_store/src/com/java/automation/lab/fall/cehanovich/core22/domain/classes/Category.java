@@ -9,7 +9,7 @@ public class Category {
     private Set<Subcategory> subcategories;
     private String name;
 
-    public Category(int id, HashSet<Subcategory> subcategories, String name) {
+    public Category(int id, Set<Subcategory> subcategories, String name) {
         this.id = id;
         this.subcategories = subcategories;
         this.name = name;
@@ -27,7 +27,7 @@ public class Category {
         return subcategories;
     }
 
-    public void setSubcategories(HashSet<Subcategory> subcategories) {
+    public void setSubcategories(Set<Subcategory> subcategories) {
         this.subcategories = subcategories;
     }
 

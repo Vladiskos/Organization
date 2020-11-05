@@ -16,7 +16,7 @@ public class PriceBook {
     private Map<Variation, BigDecimal> priceAndProduct;
 
     public PriceBook(Currency currency, boolean enabled, OffsetDateTime validFrom, OffsetDateTime validTo,
-                     HashMap<Variation, BigDecimal> priceAndProduct) {
+                     Map<Variation, BigDecimal> priceAndProduct) {
         this.currency = currency;
         this.enabled = enabled;
         this.validFrom = validFrom;
@@ -60,7 +60,7 @@ public class PriceBook {
         return priceAndProduct;
     }
 
-    public void setPriceAndProduct(HashMap<Variation, BigDecimal> priceAndProduct) {
+    public void setPriceAndProduct(Map<Variation, BigDecimal> priceAndProduct) {
         this.priceAndProduct = priceAndProduct;
     }
 

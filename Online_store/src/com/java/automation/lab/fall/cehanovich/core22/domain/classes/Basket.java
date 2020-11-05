@@ -1,5 +1,7 @@
 package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 
+import com.java.automation.lab.fall.cehanovich.core22.domain.interfaces.PaymentMethod;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;

@@ -1,14 +1,16 @@
 package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Subcategory {
     private int id;
     private int discount;
     private String name;
-    private Product[] products;
+    private Set<Product> products;
 
-    public Subcategory(int id, int discount, String name, Product[] products) {
+    public Subcategory(int id, int discount, String name, HashSet<Product> products) {
         this.id = id;
         this.discount = discount;
         this.name = name;
@@ -39,19 +41,18 @@ public class Subcategory {
         this.name = name;
     }
 
-    public Product[] getProducts() {
+    public Set<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(Product[] products) {
+    public void setProducts(Set<Product> products) {
         this.products = products;
     }
-
 
     @Override
     public String toString() {
         return "Subcategory {\nID: " + id + "Discount: " + discount + "Name: " + name + "Products: " +
-                Arrays.toString(products) + "\n}";
+                products.toString() + "\n}";
     }
 
     @Override
@@ -67,11 +68,11 @@ public class Subcategory {
         }
         Subcategory other = (Subcategory) that;
         return id == other.id && discount == other.discount && name.equals(other.name) &&
-                Arrays.equals(products, other.products);
+                products.equals(other.products);
     }
 
     @Override
     public int hashCode() {
-        return id + name.hashCode() + Arrays.hashCode(products);
+        return id + name.hashCode() + products.hashCode();
     }
 }

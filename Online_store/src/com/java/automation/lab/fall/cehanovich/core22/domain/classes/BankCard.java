@@ -1,16 +1,22 @@
 package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 
-import java.util.Arrays;
+import com.java.automation.lab.fall.cehanovich.core22.domain.interfaces.PaymentMethod;
 
-public class BankCard {
+import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.regex.Pattern;
+
+public class BankCard implements PaymentMethod {
     private String number;
     private String validity;
     private String cvc;
+    private BigDecimal balance;
 
-    public BankCard(String number, String validity, String cvc) throws Exception {
+    public BankCard(String number, String validity, String cvc, BigDecimal balance) throws Exception {
         setNumber(number);
-        this.validity = validity;
+        setValidity(validity);
         setCvc(cvc);
+        this.balance = balance;
     }
 
     public String getNumber() {
@@ -18,14 +24,23 @@ public class BankCard {
     }
 
     public void setNumber(String number) throws Exception {
-        if (number.length() != 19)
-            for (int i = 0; i < number.length(); i++) {
-                if (!(number.charAt(i) > '0' && number.charAt(i) < '9' || number.charAt(i) ==' ')) {
+        if (number.length() == 19) {
+            String[] num = number.split(" ");
+
+            for (String word : num) {
+                if (word.length() != 4) {
                     throw new IllegalArgumentException("Illegal card number!");
                 }
-
+                for (char i : word.toCharArray()) {
+                    if (i < '0' || i > '9') {
+                        throw new IllegalArgumentException("Illegal card number!");
+                    }
+                }
             }
-        this.number = number;
+            this.number = number;
+        } else {
+            throw new IllegalArgumentException("Illegal card number!");
+        }
     }
 
     public String getValidity() {
@@ -33,21 +48,47 @@ public class BankCard {
     }
 
     public void setValidity(String validity) {
-        this.validity = validity;
+        if (validity.length() == 5) {
+            String[] val = validity.split("/");
+
+            for (String word : val) {
+                if (word.length() != 2) {
+                    throw new IllegalArgumentException("Illegal card validity!");
+                }
+                for (char i : word.toCharArray()) {
+                    if (i < '0' || i > '9') {
+                        throw new IllegalArgumentException("Illegal card validity!");
+                    }
+                }
+            }
+            this.validity = validity;
+        } else {
+            throw new IllegalArgumentException("Illegal card validity!");
+        }
     }
 
     public String getCvc() {
         return cvc;
     }
 
-    public void setCvc(String cvc) throws Exception{
-        if (cvc.length() != 19)
-            for (int i = 0; i < cvc.length(); i++) {
-                if (!(cvc.charAt(i) > '0' && cvc.charAt(i) < '9')) {
-                    throw new IllegalArgumentException("Illegal cvc code!");
-                }
+    public void setCvc(String cvc) throws Exception {
+        if (cvc.length() == 3) {
+            for (char i : cvc.toCharArray()) {
+                if (i < '0' || i > '9')
+                    throw new IllegalArgumentException("Illegal card number!");
             }
-        this.cvc = cvc;
+            this.cvc = cvc;
+        } else {
+            throw new IllegalArgumentException("Illegal card number!");
+        }
+    }
+
+    public BigDecimal getBalance() {
+        return balance;
+    }
+
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
     }
 
     @Override

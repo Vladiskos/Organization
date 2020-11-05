@@ -1,13 +1,11 @@
-package com.java.automation.lab.fall.cehanovich.core22.domain.classes.dictionaries;
+package com.java.automation.lab.fall.cehanovich.core22.domain.classes.util;
 
-import javax.swing.plaf.basic.BasicButtonUI;
 import java.io.*;
-import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 
-public class Diction {
+public class fileUtil {
     public void createFile(String path) {
         try {
             File file = new File(path);

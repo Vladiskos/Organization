@@ -4,9 +4,11 @@ import com.java.automation.lab.fall.cehanovich.core22.domain.enums.Currency;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
-import java.util.Date;
+import java.util.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class PriceBook {
     private Currency currency;
@@ -63,7 +65,6 @@ public class PriceBook {
     public void setPriceAndProduct(Map<Variation, BigDecimal> priceAndProduct) {
         this.priceAndProduct = priceAndProduct;
     }
-
 
     @Override
     public String toString() {

@@ -5,7 +5,7 @@ import com.java.automation.lab.fall.cehanovich.core22.domain.enums.Size;
 
 import java.util.Arrays;
 
-public class Variation {
+public class Variation extends Thread {
     private int id;
     private Size size;
     private Color color;
@@ -20,7 +20,11 @@ public class Variation {
         this.discount = discount;
     }
 
-    public int getId() {
+    public static synchronized void update(Size size, Color color, Product product, int discount) {
+
+    }
+
+    public int getIdd() {
         return id;
     }
 

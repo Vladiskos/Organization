@@ -11,6 +11,10 @@ public class BankCard extends PaymentMethod {
     private String validity;
     private String cvc;
 
+    public BankCard() {
+
+    }
+
     public BankCard(String number, String validity, String cvc, BigDecimal balance) throws Exception {
         super(balance);
         setNumber(number);

@@ -38,7 +38,6 @@ public class ShippingInfo {
         this.customerInfo = customerInfo;
     }
 
-
     @Override
     public String toString() {
         return "Shipping info {\nDate: " + date.toString() + "Address: " + address + "Customer info: " +

@@ -5,7 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 
-public class fileUtil {
+public class FileUtil {
     public void createFile(String path) {
         try {
             File file = new File(path);

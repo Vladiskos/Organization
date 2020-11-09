@@ -5,6 +5,10 @@ import java.math.BigDecimal;
 public abstract class PaymentMethod {
     protected BigDecimal balance;
 
+    public PaymentMethod() {
+
+    }
+
     public PaymentMethod(BigDecimal balance) {
         this.balance = balance;
     }

@@ -3,12 +3,9 @@ package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
-public class Basket {
+public class Basket extends Thread{
     private List<Variation> variations;
     private int varCounter = 0;
     private BigDecimal totalPrice;
@@ -19,15 +16,17 @@ public class Basket {
     private BillingInfo billingInfo;
     private ShippingInfo shippingInfo;
 
+    public Basket() {
+
+    }
+
     public Basket(List<Variation> variations, BigDecimal totalPrice, PaymentMethod paymentMethod, PriceBook priceBook,
-                  Coupon coupon, BillingInfo billingInfo, ShippingInfo shippingInfo) {
+                  Coupon coupon) {
         this.variations = variations;
         this.totalPrice = totalPrice;
         this.paymentMethod = paymentMethod;
         this.priceBook = priceBook;
         this.coupon = coupon;
-        this.billingInfo = billingInfo;
-        this.shippingInfo = shippingInfo;
 
     }
 
@@ -108,6 +107,16 @@ public class Basket {
         varCounter--;
     }
 
+
+    public void run() {
+        try {
+            createOrder();
+            System.out.println("HUY");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public Order createOrder() throws Exception {
         if (paymentMethod.balance.compareTo(totalPrice) < 0) {
             throw new IllegalArgumentException("Not enough funds to pay!");
@@ -135,7 +144,7 @@ public class Basket {
             }
         }
         totalPrice = (totalPrice.divide(new BigDecimal(100), 2)).
-                multiply(new BigDecimal(coupon.getDiscount()));
+                multiply(new BigDecimal(coupon.getDiscountPercent()));
         return totalPrice;
     }
 

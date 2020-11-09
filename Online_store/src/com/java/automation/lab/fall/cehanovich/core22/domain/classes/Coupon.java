@@ -1,16 +1,14 @@
 package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 
-import java.util.Arrays;
-
 public class Coupon {
     private int id;
     private boolean enabled;
-    private int discount;
+    private int discountPercent;
 
-    public Coupon(int id, boolean enabled, int discount) {
+    public Coupon(int id, boolean enabled, int discountPercent) {
         this.id = id;
         this.enabled = enabled;
-        this.discount = discount;
+        this.discountPercent = discountPercent;
     }
 
     public int getId() {
@@ -29,17 +27,17 @@ public class Coupon {
         this.enabled = enabled;
     }
 
-    public int getDiscount() {
-        return discount;
+    public int getDiscountPercent() {
+        return discountPercent;
     }
 
-    public void setDiscount(int discount) {
-        this.discount = discount;
+    public void setDiscountPercent(int discountPercent) {
+        this.discountPercent = discountPercent;
     }
 
     @Override
     public String toString() {
-        return "Coupon {\nID: " + id + "Is enabled" + enabled + "Discount: " + discount + "%\n}";
+        return "Coupon {\nID: " + id + "Is enabled" + enabled + "Discount: " + discountPercent + "%\n}";
     }
 
     @Override
@@ -54,11 +52,11 @@ public class Coupon {
             return true;
         }
         Coupon other = (Coupon) that;
-        return id == other.id && enabled == other.enabled && discount == other.discount;
+        return id == other.id && enabled == other.enabled && discountPercent == other.discountPercent;
     }
 
     @Override
     public int hashCode() {
-        return id * 13 + discount + 3;
+        return id * 13 + discountPercent + 3;
     }
 }

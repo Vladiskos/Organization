@@ -5,7 +5,8 @@ import java.math.RoundingMode;
 import java.time.OffsetDateTime;
 import java.util.List;
 
-public class Basket extends Thread{
+public class Basket {
+    private int id;
     private List<Variation> variations;
     private int varCounter = 0;
     private BigDecimal totalPrice;
@@ -20,8 +21,9 @@ public class Basket extends Thread{
 
     }
 
-    public Basket(List<Variation> variations, BigDecimal totalPrice, PaymentMethod paymentMethod, PriceBook priceBook,
-                  Coupon coupon) {
+    public Basket(int id, List<Variation> variations, BigDecimal totalPrice, PaymentMethod paymentMethod,
+                  PriceBook priceBook, Coupon coupon) {
+        this.id = id;
         this.variations = variations;
         this.totalPrice = totalPrice;
         this.paymentMethod = paymentMethod;
@@ -94,6 +96,14 @@ public class Basket extends Thread{
         this.shippingInfo = shippingInfo;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void addVariation(Variation variation) {
         variations.set(varCounter,variation);
         varCounter++;
@@ -105,24 +115,6 @@ public class Basket extends Thread{
         }
         variations.set(varCounter-1,null);
         varCounter--;
-    }
-
-
-    public void run() {
-        try {
-            createOrder();
-            System.out.println("HUY");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public Order createOrder() throws Exception {
-        if (paymentMethod.balance.compareTo(totalPrice) < 0) {
-            throw new IllegalArgumentException("Not enough funds to pay!");
-        } else {
-            return new Order(this, "", new BigDecimal(5));
-        }
     }
 
     public ShippingInfo createShipping(OffsetDateTime date, Address address) {

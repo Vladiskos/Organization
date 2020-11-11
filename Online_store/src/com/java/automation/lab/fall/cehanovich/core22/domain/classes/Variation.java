@@ -5,7 +5,7 @@ import com.java.automation.lab.fall.cehanovich.core22.domain.enums.Size;
 
 import java.util.Arrays;
 
-public class Variation extends Thread {
+public class Variation {
     private int id;
     private Size size;
     private Color color;
@@ -24,7 +24,7 @@ public class Variation extends Thread {
 
     }
 
-    public int getIdd() {
+    public int getId() {
         return id;
     }
 

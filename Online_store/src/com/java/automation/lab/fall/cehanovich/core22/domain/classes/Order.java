@@ -5,12 +5,14 @@ import java.math.RoundingMode;
 import java.util.Arrays;
 
 public class Order {
+    private int id;
     private Basket basket;
     private String description;
     private BigDecimal tax;
     private BigDecimal totalPrice;
 
-    public Order(Basket basket, String description, BigDecimal tax) {
+    public Order(int id, Basket basket, String description, BigDecimal tax) {
+        this.id = id;
         this.basket = basket;
         this.description = description;
         this.tax = tax;
@@ -47,6 +49,14 @@ public class Order {
 
     public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public BigDecimal countTotalPrice() {

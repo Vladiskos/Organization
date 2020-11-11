@@ -1,6 +1,9 @@
 package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 
-import java.util.Arrays;
+import com.java.automation.lab.fall.cehanovich.core22.domain.classes.services.OrderServiceImpl;
+import com.java.automation.lab.fall.cehanovich.core22.domain.interfaces.OrderService;
+
+import java.math.BigDecimal;
 
 public abstract class User {
     protected int id;
@@ -59,6 +62,14 @@ public abstract class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Order takeAnOrder(Basket basket, String description, BigDecimal tax) {
+        if (basket.getPaymentMethod().balance.compareTo(basket.getTotalPrice()) < 0) {
+            throw new IllegalArgumentException("Not enough funds to pay!");
+        }
+        OrderService service = OrderServiceImpl.getInst();
+        return service.create(basket, description, tax);
     }
 
     @Override

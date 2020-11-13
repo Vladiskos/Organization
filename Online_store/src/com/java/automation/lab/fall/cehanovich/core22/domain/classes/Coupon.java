@@ -1,9 +1,15 @@
 package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 
-public class Coupon {
+import java.util.Comparator;
+
+public class Coupon implements Comparable<Coupon> {
     private int id;
     private boolean enabled;
     private int discountPercent;
+
+    public Coupon() {
+
+    }
 
     public Coupon(int id, boolean enabled, int discountPercent) {
         this.id = id;
@@ -59,4 +65,18 @@ public class Coupon {
     public int hashCode() {
         return id * 13 + discountPercent + 3;
     }
+
+
+    @Override
+    public int compareTo(Coupon a) {
+        return this.getId() - a.getId();
+    }
+
+    public static Comparator<Coupon> DiscountPercentComparator = new Comparator<Coupon>() {
+        @Override
+        public int compare(Coupon a1, Coupon a2) {
+            return (a1.getDiscountPercent() - a2.getDiscountPercent());
+        }
+    };
+
 }

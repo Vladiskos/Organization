@@ -4,9 +4,10 @@ import com.java.automation.lab.fall.cehanovich.core22.domain.classes.PaymentMeth
 
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.regex.Pattern;
 
-public class BankCard extends PaymentMethod {
+public class BankCard extends PaymentMethod{
     private String number;
     private String validity;
     private String cvc;
@@ -118,4 +119,20 @@ public class BankCard extends PaymentMethod {
     public int hashCode() {
         return number.hashCode() + validity.hashCode() + cvc.hashCode();
     }
+
+    public static Comparator<BankCard> ValidityComparator = new Comparator<BankCard>() {
+
+        @Override
+        public int compare(BankCard a1, BankCard a2) {
+            return (a1.getValidity().compareTo(a2.getValidity()));
+        }
+    };
+
+    public static Comparator<BankCard> CVCComparator = new Comparator<BankCard>() {
+
+        @Override
+        public int compare(BankCard a1, BankCard a2) {
+            return (a1.getCvc().compareTo(a2.getCvc()));
+        }
+    };
 }

@@ -4,8 +4,9 @@ import com.java.automation.lab.fall.cehanovich.core22.domain.enums.Color;
 import com.java.automation.lab.fall.cehanovich.core22.domain.enums.Size;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
-public class Variation {
+public class Variation implements Comparable<Variation>{
     private int id;
     private Size size;
     private Color color;
@@ -18,10 +19,6 @@ public class Variation {
         this.color = color;
         this.product = product;
         this.discount = discount;
-    }
-
-    public static synchronized void update(Size size, Color color, Product product, int discount) {
-
     }
 
     public int getId() {
@@ -91,4 +88,25 @@ public class Variation {
     public int hashCode() {
         return id + size.hashCode() + color.hashCode() + product.hashCode() - discount;
     }
+
+    @Override
+    public int compareTo(Variation a) {
+        return this.getId() - a.getId();
+    }
+
+    public static Comparator<Variation> SizeComparator = new Comparator<Variation>() {
+
+        @Override
+        public int compare(Variation a1, Variation a2) {
+            return a1.getColor().compareTo(a2.getColor());
+        }
+    };
+
+    public static Comparator<Variation> ColorComparator = new Comparator<Variation>() {
+
+        @Override
+        public int compare(Variation a1, Variation a2) {
+            return (a1.getColor().compareTo(a2.getColor()));
+        }
+    };
 }

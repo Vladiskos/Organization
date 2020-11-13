@@ -2,7 +2,9 @@ package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 
 import com.java.automation.lab.fall.cehanovich.core22.domain.enums.City;
 
-public class Address {
+import java.util.Comparator;
+
+public class Address implements Comparable<Address> {
     private City city;
     private String street;
     private int house;
@@ -74,4 +76,40 @@ public class Address {
     public int hashCode() {
         return city.hashCode() + street.hashCode() + house * apartment + 13;
     }
+
+    @Override
+    public int compareTo(Address a) {
+        return this.getCity().compareTo(a.getCity());
+    }
+
+    public static Comparator<Address> CityComparator = new Comparator<Address>() {
+
+        @Override
+        public int compare(Address a1, Address a2) {
+            return (a1.getCity().compareTo(a2.getCity()));
+        }
+    };
+
+    public static Comparator<Address> StreetComparator = new Comparator<Address>() {
+
+        @Override
+        public int compare(Address a1, Address a2) {
+            return (a1.getStreet().compareTo(a2.getStreet()));
+        }
+    };
+
+    public static Comparator<Address> HouseComparator = new Comparator<Address>() {
+        @Override
+        public int compare(Address a1, Address a2) {
+            return a1.getHouse() - a2.getHouse();
+        }
+    };
+
+    public static Comparator<Address> ApartmentComparator = new Comparator<Address>() {
+        @Override
+        public int compare(Address a1, Address a2) {
+            return a1.getApartment() - a2.getApartment();
+        }
+    };
+
 }

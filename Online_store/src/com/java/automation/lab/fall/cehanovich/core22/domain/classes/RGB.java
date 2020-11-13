@@ -1,6 +1,8 @@
 package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 
-public class RGB {
+import java.util.Comparator;
+
+public class RGB implements Comparable<RGB>{
     private int red;
     private int green;
     private int blue;
@@ -60,4 +62,25 @@ public class RGB {
     public int hashCode() {
         return blue * 13 + blue + 3 + red * 7;
     }
+
+    @Override
+    public int compareTo(RGB a) {
+        return this.getRed() - a.getRed();
+    }
+
+    public static Comparator<RGB> GreenComparator = new Comparator<RGB>() {
+
+        @Override
+        public int compare(RGB a1, RGB a2) {
+            return a1.getGreen() - a2.getGreen();
+        }
+    };
+
+    public static Comparator<RGB> BlueComparator = new Comparator<RGB>() {
+
+        @Override
+        public int compare(RGB a1, RGB a2) {
+            return a1.getBlue() - a2.getBlue();
+        }
+    };
 }

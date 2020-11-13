@@ -1,11 +1,11 @@
 package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 
-import com.java.automation.lab.fall.cehanovich.core22.domain.classes.services.OrderServiceImpl;
-import com.java.automation.lab.fall.cehanovich.core22.domain.interfaces.OrderService;
+import com.java.automation.lab.fall.cehanovich.core22.domain.classes.dao.impl.OrderDAOImpl;
+import com.java.automation.lab.fall.cehanovich.core22.domain.classes.dao.OrderDAO;
 
 import java.math.BigDecimal;
 
-public abstract class User {
+public abstract class User implements Comparable<User>{
     protected int id;
     protected String firstname;
     protected String lastname;
@@ -68,7 +68,7 @@ public abstract class User {
         if (basket.getPaymentMethod().balance.compareTo(basket.getTotalPrice()) < 0) {
             throw new IllegalArgumentException("Not enough funds to pay!");
         }
-        OrderService service = OrderServiceImpl.getInst();
+        OrderDAO service = OrderDAOImpl.getInstance();
         return service.create(basket, description, tax);
     }
 
@@ -97,5 +97,10 @@ public abstract class User {
     @Override
     public int hashCode() {
         return id + firstname.hashCode() + lastname.hashCode() + contactNumber.hashCode();
+    }
+
+    @Override
+    public int compareTo(User a) {
+        return this.getId() - a.getId();
     }
 }

@@ -1,10 +1,11 @@
 package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Subcategory {
+public class Subcategory implements Comparable<Subcategory> {
     private int id;
     private int discount;
     private String name;
@@ -75,4 +76,26 @@ public class Subcategory {
     public int hashCode() {
         return id + name.hashCode() + products.hashCode();
     }
+
+
+    @Override
+    public int compareTo(Subcategory a) {
+        return this.getId() - a.getId();
+    }
+
+    public static Comparator<Subcategory> DiscountComparator = new Comparator<Subcategory>() {
+
+        @Override
+        public int compare(Subcategory a1, Subcategory a2) {
+            return a1.getDiscount() - a2.getDiscount();
+        }
+    };
+
+    public static Comparator<Subcategory> NameComparator = new Comparator<Subcategory>() {
+
+        @Override
+        public int compare(Subcategory a1, Subcategory a2) {
+            return (a1.getName().compareTo(a2.getName()));
+        }
+    };
 }

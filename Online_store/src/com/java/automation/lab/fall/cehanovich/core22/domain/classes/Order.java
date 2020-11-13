@@ -3,8 +3,9 @@ package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Arrays;
+import java.util.Comparator;
 
-public class Order {
+public class Order implements Comparable<Order>{
     private int id;
     private Basket basket;
     private String description;
@@ -90,5 +91,45 @@ public class Order {
     public int hashCode() {
         return basket.hashCode() + description.hashCode();
     }
+
+
+    @Override
+    public int compareTo(Order a) {
+        return this.getId() - a.getId();
+    }
+
+    public static Comparator<Order> BasketComparator = new Comparator<Order>() {
+
+        @Override
+        public int compare(Order a1, Order a2) {
+            return (a1.getBasket().compareTo(a2.getBasket()));
+        }
+    };
+
+    public static Comparator<Order> DescriptionComparator = new Comparator<Order>() {
+
+        @Override
+        public int compare(Order a1, Order a2) {
+            return (a1.getDescription().compareTo(a2.getDescription()));
+        }
+    };
+
+    public static Comparator<Order> TaxComparator = new Comparator<Order>() {
+
+        @Override
+        public int compare(Order a1, Order a2) {
+            return (a1.getTax().compareTo(a2.getTax()));
+        }
+    };
+
+    public static Comparator<Order> TotalPriceComparator = new Comparator<Order>() {
+
+        @Override
+        public int compare(Order a1, Order a2) {
+            return (a1.getTotalPrice().compareTo(a2.getTotalPrice()));
+        }
+    };
+
+
 
 }

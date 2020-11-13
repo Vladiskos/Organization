@@ -2,7 +2,7 @@ package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 
 import java.math.BigDecimal;
 
-public abstract class PaymentMethod {
+public abstract class PaymentMethod implements Comparable<PaymentMethod>{
     protected BigDecimal balance;
 
     public PaymentMethod() {
@@ -45,5 +45,10 @@ public abstract class PaymentMethod {
     @Override
     public int hashCode() {
         return balance.hashCode() * 3 + 19;
+    }
+
+    @Override
+    public int compareTo(PaymentMethod a) {
+        return this.getBalance().compareTo(a.getBalance());
     }
 }

@@ -3,9 +3,10 @@ package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.OffsetDateTime;
+import java.util.Comparator;
 import java.util.List;
 
-public class Basket {
+public class Basket implements Comparable<Basket>{
     private int id;
     private List<Variation> variations;
     private int varCounter = 0;
@@ -38,6 +39,14 @@ public class Basket {
 
     public void setVariations(List<Variation> variations) {
         this.variations = variations;
+    }
+
+    public int getVarCounter() {
+        return varCounter;
+    }
+
+    public void setVarCounter(int varCounter) {
+        this.varCounter = varCounter;
     }
 
     public BigDecimal getTotalPrice() {
@@ -167,5 +176,42 @@ public class Basket {
     public int hashCode() {
         return variations.hashCode() + totalPrice.hashCode() - paymentMethod.hashCode() + coupon.hashCode();
     }
+
+
+    @Override
+    public int compareTo(Basket a) {
+        return this.getId() - a.getId();
+    }
+
+    public static Comparator<Basket> VarCounterComparator = new Comparator<Basket>() {
+        @Override
+        public int compare(Basket a1, Basket a2) {
+            return a1.getVarCounter() - a2.getVarCounter();
+        }
+    };
+
+    public static Comparator<Basket> TotalPriceComparator = new Comparator<Basket>() {
+
+        @Override
+        public int compare(Basket a1, Basket a2) {
+            return (a1.getTotalPrice().compareTo(a2.getTotalPrice()));
+        }
+    };
+
+    public static Comparator<Basket> PaymentMethodComparator = new Comparator<Basket>() {
+        @Override
+        public int compare(Basket a1, Basket a2) {
+            return (a1.getPaymentMethod().compareTo(a2.getPaymentMethod()));
+        }
+    };
+
+    public static Comparator<Basket> PriceBookComparator = new Comparator<Basket>() {
+        @Override
+        public int compare(Basket a1, Basket a2) {
+            return (a1.getPriceBook().compareTo(a2.getPriceBook()));
+        }
+    };
+
+
 
 }

@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class PriceBook {
+public class PriceBook implements Comparable<PriceBook> {
     private Currency currency;
     private boolean enabled;
     private OffsetDateTime validFrom;
@@ -93,5 +93,25 @@ public class PriceBook {
         return currency.hashCode() + validFrom.hashCode() + validTo.hashCode() - priceAndProduct.hashCode();
     }
 
+
+    @Override
+    public int compareTo(PriceBook a) {
+        return this.getCurrency() .compareTo(a.getCurrency());
+    }
+
+    public static Comparator<PriceBook> ValidFromComparator = new Comparator<PriceBook>() {
+        @Override
+        public int compare(PriceBook a1, PriceBook a2) {
+            return a1.getValidFrom().compareTo(a2.getValidFrom());
+        }
+    };
+
+    public static Comparator<PriceBook> ValidToComparator = new Comparator<PriceBook>() {
+
+        @Override
+        public int compare(PriceBook a1, PriceBook a2) {
+            return (a1.getValidTo().compareTo(a2.getValidTo()));
+        }
+    };
 
 }

@@ -3,8 +3,9 @@ package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 import com.java.automation.lab.fall.cehanovich.core22.domain.enums.PaymentType;
 
 import java.math.BigDecimal;
+import java.util.Comparator;
 
-public class BillingInfo {
+public class BillingInfo implements Comparable<BillingInfo> {
     private BigDecimal totalPrice;
     private PaymentType paymentType;
     private String information;
@@ -67,4 +68,26 @@ public class BillingInfo {
     public int hashCode() {
         return information.hashCode() + totalPrice.hashCode() + paymentType.hashCode();
     }
+
+
+    @Override
+    public int compareTo(BillingInfo a) {
+        return this.getTotalPrice().compareTo(a.getTotalPrice());
+    }
+
+    public static Comparator<BillingInfo> PaymentComparator = new Comparator<BillingInfo>() {
+
+        @Override
+        public int compare(BillingInfo a1, BillingInfo a2) {
+            return (a1.getPayment().compareTo(a2.getPayment()));
+        }
+    };
+
+    public static Comparator<BillingInfo> InformationComparator = new Comparator<BillingInfo>() {
+
+        @Override
+        public int compare(BillingInfo a1, BillingInfo a2) {
+            return (a1.getInformation().compareTo(a2.getInformation()));
+        }
+    };
 }

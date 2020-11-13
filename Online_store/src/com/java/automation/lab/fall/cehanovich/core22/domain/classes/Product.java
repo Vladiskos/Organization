@@ -1,6 +1,8 @@
 package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 
-public class Product {
+import java.util.Comparator;
+
+public class Product implements Comparable<Product> {
     private int code;
     private String name;
     private String brand;
@@ -71,4 +73,36 @@ public class Product {
     public int hashCode() {
         return code + name.hashCode() + brand.hashCode() - description.hashCode();
     }
+
+
+    @Override
+    public int compareTo(Product a) {
+        return this.getCode() - a.getCode();
+    }
+
+    public static Comparator<Product> NameComparator = new Comparator<Product>() {
+
+        @Override
+        public int compare(Product a1, Product a2) {
+            return (a1.getName().compareTo(a2.getName()));
+        }
+    };
+
+    public static Comparator<Product> DescriptionComparator = new Comparator<Product>() {
+
+        @Override
+        public int compare(Product a1, Product a2) {
+            return (a1.getDescription().compareTo(a2.getDescription()));
+        }
+    };
+
+    public static Comparator<Product> BrandComparator = new Comparator<Product>() {
+
+        @Override
+        public int compare(Product a1, Product a2) {
+            return (a1.getBrand().compareTo(a2.getBrand()));
+        }
+    };
+
+
 }

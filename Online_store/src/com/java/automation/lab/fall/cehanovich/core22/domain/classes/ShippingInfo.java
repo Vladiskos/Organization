@@ -1,9 +1,10 @@
 package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 
 import java.time.OffsetDateTime;
+import java.util.Comparator;
 import java.util.Date;
 
-public class ShippingInfo {
+public class ShippingInfo implements Comparable<ShippingInfo>{
     private OffsetDateTime date;
     private Address address;
     private User customerInfo;
@@ -30,11 +31,11 @@ public class ShippingInfo {
         this.address = address;
     }
 
-    public User getPaymentMethod() {
+    public User getCustomerInfo() {
         return customerInfo;
     }
 
-    public void setPaymentMethod(User customerInfo) {
+    public void setCustomerInfo(User customerInfo) {
         this.customerInfo = customerInfo;
     }
 
@@ -63,4 +64,26 @@ public class ShippingInfo {
     public int hashCode() {
         return customerInfo.hashCode() + address.hashCode() + date.hashCode();
     }
+
+
+    @Override
+    public int compareTo(ShippingInfo a) {
+        return this.getDate().compareTo(a.getDate());
+    }
+
+    public static Comparator<ShippingInfo> AddressComparator = new Comparator<ShippingInfo>() {
+
+        @Override
+        public int compare(ShippingInfo a1, ShippingInfo a2) {
+            return a1.getAddress().compareTo(a2.getAddress());
+        }
+    };
+
+    public static Comparator<ShippingInfo> CustomerInfoComparator = new Comparator<ShippingInfo>() {
+
+        @Override
+        public int compare(ShippingInfo a1, ShippingInfo a2) {
+            return a1.getCustomerInfo().compareTo(a2.getCustomerInfo());
+        }
+    };
 }

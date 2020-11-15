@@ -18,20 +18,19 @@ public class UserService {
     private static final UserDAO DAO = UserDAOImpl.getInstance();
 
 
-    public static User createUser(int id, String firstname, String lastname, String contactNumber, String email,
-                                  Set<BankCard> savedCards, Address address, int discountPercent, LocalDate birthday) {
-        return DAO.create(id, firstname, lastname, contactNumber, email, savedCards, address, discountPercent, birthday);
+    public static User createUser(int id, String firstname, String lastname, String contactNumber, String email) {
+        return DAO.create(id, firstname, lastname, contactNumber, email);
     }
 
     public static User getUserById(Long id) {
         return DAO.getById(id);
     }
 
-    public static List<RegisteredUser> get() {
+    public static List<User> get() {
         return DAO.get();
     }
 
-    public static RegisteredUser update(RegisteredUser o) {
+    public static User update(User o) {
         return DAO.update(o);
     }
 

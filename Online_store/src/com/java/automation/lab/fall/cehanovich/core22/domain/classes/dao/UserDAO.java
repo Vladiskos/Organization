@@ -9,10 +9,9 @@ import java.util.List;
 import java.util.Set;
 
 public interface UserDAO {
-    RegisteredUser create(int id, String firstname, String lastname, String contactNumber, String email,
-                          Set<BankCard> savedCards, Address address, int discountPercent, LocalDate birthday);
-    RegisteredUser update(RegisteredUser user);
-    RegisteredUser getById(long id);
-    List<RegisteredUser> get();
+    User create(int id, String firstname, String lastname, String contactNumber, String email);
+    User update(User user);
+    User getById(long id);
+    List<User> get();
     void delete(long id);
 }

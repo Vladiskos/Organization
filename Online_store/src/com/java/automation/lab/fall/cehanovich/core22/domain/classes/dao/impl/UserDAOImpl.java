@@ -23,26 +23,23 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public synchronized RegisteredUser create(int id, String firstname, String lastname, String contactNumber, String email,
-                                    Set<BankCard> savedCards, Address address, int discountPercent, LocalDate birthday) {
-        return new RegisteredUser(id, firstname, lastname, contactNumber, email, savedCards, address, discountPercent,
-                birthday);
+    public synchronized User create(int id, String firstname, String lastname, String contactNumber, String email) {
+        return new User(id, firstname, lastname, contactNumber, email);
     }
 
     @Override
-    public synchronized RegisteredUser update(RegisteredUser newUser) {
-        return new RegisteredUser(newUser.getId(), newUser.getFirstname(), newUser.getLastname(),
-                newUser.getContactNumber(), newUser.getEmail(), newUser.getSavedCards(), newUser.getAddress(),
-                newUser.getDiscount(), newUser.getBirthday());
+    public synchronized User update(User newUser) {
+        return new User(newUser.getId(), newUser.getFirstname(), newUser.getLastname(),
+                newUser.getContactNumber(), newUser.getEmail());
     }
 
     @Override
-    public RegisteredUser getById(long id) {
+    public User getById(long id) {
         throw new NotImplementedException("Method 'getById' not implemented for " + this.getClass());
     }
 
     @Override
-    public List<RegisteredUser> get() {
+    public List<User> get() {
         throw new NotImplementedException("Method 'get' not implemented for " + this.getClass());
     }
 

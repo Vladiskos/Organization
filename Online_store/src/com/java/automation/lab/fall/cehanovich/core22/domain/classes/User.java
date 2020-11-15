@@ -5,7 +5,7 @@ import com.java.automation.lab.fall.cehanovich.core22.domain.classes.dao.OrderDA
 
 import java.math.BigDecimal;
 
-public abstract class User implements Comparable<User>{
+public class User implements Comparable<User>{
     protected int id;
     protected String firstname;
     protected String lastname;

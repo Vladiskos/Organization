@@ -18,7 +18,7 @@ import java.util.concurrent.*;
 public class Main {
 
     public static void main(String[] args) {
-        Set<BankCard> cards = new HashSet<BankCard>();
+        Set<BankCard> cards = new HashSet<>();
         cards.add(new BankCard());
         cards.add(new BankCard());
         cards.add(new BankCard());
@@ -31,7 +31,7 @@ public class Main {
 
 
         Basket b = new Basket();
-        List<Variation> variations = new ArrayList<Variation>();
+        List<Variation> variations = new ArrayList<>();
 
         Product product = new Product(13,"1234","sfdg","wcer");
         Variation var = new Variation(1,Size.S,Color.BLACK, product,5);
@@ -42,7 +42,7 @@ public class Main {
         PaymentMethod paymentMethod = new BankCard();
         paymentMethod.setBalance(BigDecimal.valueOf(2000));
 
-        Map<Variation, BigDecimal> priceAndProduct = new HashMap<Variation, BigDecimal>();
+        Map<Variation, BigDecimal> priceAndProduct = new HashMap<>();
         priceAndProduct.put(var,BigDecimal.valueOf(100));
 
         PriceBook priceBook = new PriceBook(Currency.EUR,true, OffsetDateTime.now(), OffsetDateTime.now(),
@@ -56,7 +56,6 @@ public class Main {
             for (int i = 0; i < 5; i++) {
                 us1.takeAnOrder(b1,"", BigDecimal.valueOf(0));
             }
-
         };
         Runnable thr2 = () -> {
             for (int i = 0; i < 5; i++) {

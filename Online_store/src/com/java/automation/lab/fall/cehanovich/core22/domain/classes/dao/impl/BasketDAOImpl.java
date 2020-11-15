@@ -7,7 +7,7 @@ import com.java.automation.lab.fall.cehanovich.core22.domain.classes.dao.BasketD
 import java.math.BigDecimal;
 import java.util.List;
 
-public class BasketDAOImpl implements BasketDAO {
+public class BasketDAOImpl implements BasketDAO{
     private static BasketDAOImpl instance;
 
     public static synchronized BasketDAOImpl getInstance() {
@@ -30,9 +30,8 @@ public class BasketDAOImpl implements BasketDAO {
 
     @Override
     public synchronized Basket update(Basket newBasket) {
-        Basket updated = new Basket(newBasket.getId(), newBasket.getVariations(), newBasket.getTotalPrice(),
+        return new Basket(newBasket.getId(), newBasket.getVariations(), newBasket.getTotalPrice(),
                 newBasket.getPaymentMethod(), newBasket.getPriceBook(),newBasket.getCoupon());
-        return updated;
     }
 
     @Override

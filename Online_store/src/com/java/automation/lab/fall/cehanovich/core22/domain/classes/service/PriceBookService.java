@@ -18,7 +18,6 @@ import java.util.Map;
 public class PriceBookService {
     private static final PriceBookDAO DAO = PriceBookDAOImpl.getInstance();
 
-
     public static PriceBook createPriceBook(Currency currency, boolean enabled, OffsetDateTime validFrom,
                                             OffsetDateTime validTo, Map<Variation, BigDecimal> priceAndProduct) {
         return DAO.create(currency, enabled, validFrom, validTo, priceAndProduct);

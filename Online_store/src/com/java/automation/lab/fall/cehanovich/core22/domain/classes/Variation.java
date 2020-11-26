@@ -3,7 +3,6 @@ package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 import com.java.automation.lab.fall.cehanovich.core22.domain.enums.Color;
 import com.java.automation.lab.fall.cehanovich.core22.domain.enums.Size;
 
-import java.util.Arrays;
 import java.util.Comparator;
 
 public class Variation implements Comparable<Variation>{
@@ -11,14 +10,14 @@ public class Variation implements Comparable<Variation>{
     private Size size;
     private Color color;
     private Product product;
-    private int discount;
+    private int discountPercent;
 
-    public Variation(int id, Size size, Color color, Product product, int discount) {
+    public Variation(int id, Size size, Color color, Product product, int discountPercent) {
         this.id = id;
         this.size = size;
         this.color = color;
         this.product = product;
-        this.discount = discount;
+        this.discountPercent = discountPercent;
     }
 
     public int getId() {
@@ -53,19 +52,19 @@ public class Variation implements Comparable<Variation>{
         this.product = product;
     }
 
-    public int getDiscount() {
-        return discount;
+    public int getDiscountPercent() {
+        return discountPercent;
     }
 
-    public void setDiscount(int discount) {
-        this.discount = discount;
+    public void setDiscountPercent(int discountPercent) {
+        this.discountPercent = discountPercent;
     }
 
 
     @Override
     public String toString() {
         return "Variation {\nID: " + id + "Size: " + size + "Color: " + color + "Products: " + product.toString()
-                + "Discount: " + discount + "\n}";
+                + "Discount: " + discountPercent + "\n}";
     }
 
     @Override
@@ -81,12 +80,12 @@ public class Variation implements Comparable<Variation>{
         }
         Variation other = (Variation) that;
         return id == other.id && size.equals(other.size) && color.equals(other.color) &&
-                product.equals(other.product) && discount == other.discount;
+                product.equals(other.product) && discountPercent == other.discountPercent;
     }
 
     @Override
     public int hashCode() {
-        return id + size.hashCode() + color.hashCode() + product.hashCode() - discount;
+        return id + size.hashCode() + color.hashCode() + product.hashCode() - discountPercent;
     }
 
     @Override

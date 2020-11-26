@@ -1,7 +1,7 @@
 package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 
-import com.java.automation.lab.fall.cehanovich.core22.domain.classes.dao.impl.OrderDAOImpl;
-import com.java.automation.lab.fall.cehanovich.core22.domain.classes.dao.OrderDAO;
+import com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.OrderDAOImpl;
+import com.java.automation.lab.fall.cehanovich.core22.domain.dao.OrderDAO;
 
 import java.math.BigDecimal;
 

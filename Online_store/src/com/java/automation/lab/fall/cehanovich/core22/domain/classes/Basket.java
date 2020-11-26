@@ -1,5 +1,8 @@
 package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 
+import com.java.automation.lab.fall.cehanovich.core22.domain.classes.info.BillingInfo;
+import com.java.automation.lab.fall.cehanovich.core22.domain.classes.info.ShippingInfo;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.OffsetDateTime;
@@ -140,7 +143,7 @@ public class Basket implements Comparable<Basket>{
                     totalPrice = totalPrice.add(priceBook.getPriceAndProduct().get(variation)
                             .subtract(priceBook.getPriceAndProduct().get(variation)
                                     .divide(new BigDecimal(100)))
-                            .multiply(new BigDecimal(variation.getDiscount())));
+                            .multiply(new BigDecimal(variation.getDiscountPercent())));
                 }
             }
         }

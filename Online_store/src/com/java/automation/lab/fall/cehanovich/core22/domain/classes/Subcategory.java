@@ -1,19 +1,17 @@
 package com.java.automation.lab.fall.cehanovich.core22.domain.classes;
 
-import java.util.Arrays;
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.Set;
 
 public class Subcategory implements Comparable<Subcategory> {
     private int id;
-    private int discount;
+    private int discountPercent;
     private String name;
     private Set<Product> products;
 
-    public Subcategory(int id, int discount, String name, Set<Product> products) {
+    public Subcategory(int id, int discountPercent, String name, Set<Product> products) {
         this.id = id;
-        this.discount = discount;
+        this.discountPercent = discountPercent;
         this.name = name;
         this.products = products;
     }
@@ -26,12 +24,12 @@ public class Subcategory implements Comparable<Subcategory> {
         this.id = id;
     }
 
-    public int getDiscount() {
-        return discount;
+    public int getDiscountPercent() {
+        return discountPercent;
     }
 
-    public void setDiscount(int discount) {
-        this.discount = discount;
+    public void setDiscountPercent(int discountPercent) {
+        this.discountPercent = discountPercent;
     }
 
     public String getName() {
@@ -52,7 +50,7 @@ public class Subcategory implements Comparable<Subcategory> {
 
     @Override
     public String toString() {
-        return "Subcategory {\nID: " + id + "Discount: " + discount + "Name: " + name + "Products: " +
+        return "Subcategory {\nID: " + id + "Discount: " + discountPercent + "Name: " + name + "Products: " +
                 products.toString() + "\n}";
     }
 
@@ -68,7 +66,7 @@ public class Subcategory implements Comparable<Subcategory> {
             return true;
         }
         Subcategory other = (Subcategory) that;
-        return id == other.id && discount == other.discount && name.equals(other.name) &&
+        return id == other.id && discountPercent == other.discountPercent && name.equals(other.name) &&
                 products.equals(other.products);
     }
 
@@ -87,7 +85,7 @@ public class Subcategory implements Comparable<Subcategory> {
 
         @Override
         public int compare(Subcategory a1, Subcategory a2) {
-            return a1.getDiscount() - a2.getDiscount();
+            return a1.getDiscountPercent() - a2.getDiscountPercent();
         }
     };
 

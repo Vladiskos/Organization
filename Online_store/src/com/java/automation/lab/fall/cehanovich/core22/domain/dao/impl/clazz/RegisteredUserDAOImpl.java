@@ -1,14 +1,12 @@
-package com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl;
+package com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.clazz;
 
-import com.java.automation.lab.fall.cehanovich.core22.domain.classes.Address;
-import com.java.automation.lab.fall.cehanovich.core22.domain.classes.BankCard;
 import com.java.automation.lab.fall.cehanovich.core22.domain.classes.RegisteredUser;
+import com.java.automation.lab.fall.cehanovich.core22.domain.constant.IOConstant;
 import com.java.automation.lab.fall.cehanovich.core22.domain.dao.RegisteredUserDAO;
 import com.java.automation.lab.fall.cehanovich.core22.domain.exception.NotImplementedException;
+import com.java.automation.lab.fall.cehanovich.core22.domain.io.ObjectIO;
 
-import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 public class RegisteredUserDAOImpl implements RegisteredUserDAO {
     private static RegisteredUserDAOImpl instance;
@@ -26,6 +24,7 @@ public class RegisteredUserDAOImpl implements RegisteredUserDAO {
 
     @Override
     public synchronized RegisteredUser create(RegisteredUser registeredUser) {
+        new ObjectIO<RegisteredUser>().write(registeredUser, IOConstant.RQ_PATH);
         return registeredUser;
     }
 
@@ -39,7 +38,7 @@ public class RegisteredUserDAOImpl implements RegisteredUserDAO {
 
     @Override
     public RegisteredUser getById(Long id) {
-        throw new NotImplementedException("Method 'getById' not implemented for " + this.getClass());
+        return new ObjectIO<RegisteredUser>().read(IOConstant.RQ_PATH);
     }
 
     @Override

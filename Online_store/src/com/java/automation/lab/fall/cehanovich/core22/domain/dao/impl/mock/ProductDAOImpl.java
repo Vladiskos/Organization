@@ -1,11 +1,8 @@
-package com.java.automation.lab.fall.cehanovich.core22.domain.dao.classs;
+package com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.mock;
 
-import com.java.automation.lab.fall.cehanovich.core22.domain.classes.Address;
 import com.java.automation.lab.fall.cehanovich.core22.domain.classes.Product;
-import com.java.automation.lab.fall.cehanovich.core22.domain.constant.IOConstant;
 import com.java.automation.lab.fall.cehanovich.core22.domain.dao.ProductDAO;
 import com.java.automation.lab.fall.cehanovich.core22.domain.exception.NotImplementedException;
-import com.java.automation.lab.fall.cehanovich.core22.domain.io.ObjectIO;
 
 import java.util.List;
 
@@ -25,7 +22,6 @@ public class ProductDAOImpl implements ProductDAO {
 
     @Override
     public synchronized Product create(Product product) {
-        new ObjectIO<Product>().write(product, IOConstant.RQ_PATH);
         return product;
     }
 
@@ -37,7 +33,7 @@ public class ProductDAOImpl implements ProductDAO {
 
     @Override
     public Product getById(Long id) {
-        return new ObjectIO<Product>().read(IOConstant.RQ_PATH);
+        throw new NotImplementedException("Method 'getById' not implemented for " + this.getClass());
     }
 
     @Override

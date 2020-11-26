@@ -1,6 +1,5 @@
-package com.java.automation.lab.fall.cehanovich.core22.domain.dao.classs;
+package com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.clazz;
 
-import com.java.automation.lab.fall.cehanovich.core22.domain.classes.Address;
 import com.java.automation.lab.fall.cehanovich.core22.domain.classes.Variation;
 import com.java.automation.lab.fall.cehanovich.core22.domain.constant.IOConstant;
 import com.java.automation.lab.fall.cehanovich.core22.domain.dao.VariationDAO;

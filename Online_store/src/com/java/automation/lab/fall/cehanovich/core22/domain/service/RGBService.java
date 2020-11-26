@@ -1,17 +1,18 @@
 package com.java.automation.lab.fall.cehanovich.core22.domain.service;
 
 import com.java.automation.lab.fall.cehanovich.core22.domain.classes.RGB;
+import com.java.automation.lab.fall.cehanovich.core22.domain.constant.PropertyConstant;
 import com.java.automation.lab.fall.cehanovich.core22.domain.dao.RGBDAO;
-import com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.RGBDAOImpl;
+import com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.mock.RGBDAOImpl;
 
 import java.util.List;
 
-public class RGBService {
-    private static final RGBDAO DAO = RGBDAOImpl.getInstance();
+public class RGBService extends BaseService{
+    private static final RGBDAO DAO = RGBDAO_MAP.get(PROPS.getValue(PropertyConstant.ENV_KEY));
 
 
     public static RGB createRGB(int red, int green, int blue) {
-        return DAO.create(red, green, blue);
+        return DAO.create(new RGB(red, green, blue));
     }
 
     public static RGB getRGBById(Long id) {
@@ -27,6 +28,6 @@ public class RGBService {
     }
 
     public static void deleteById(Long id) {
-        DAO.delete(id);
+        DAO.deleteById(id);
     }
 }

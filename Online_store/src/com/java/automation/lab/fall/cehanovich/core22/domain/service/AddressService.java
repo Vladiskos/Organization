@@ -1,18 +1,19 @@
 package com.java.automation.lab.fall.cehanovich.core22.domain.service;
 
 import com.java.automation.lab.fall.cehanovich.core22.domain.classes.Address;
+import com.java.automation.lab.fall.cehanovich.core22.domain.constant.PropertyConstant;
 import com.java.automation.lab.fall.cehanovich.core22.domain.dao.AddressDAO;
-import com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.AddressDAOImpl;
+import com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.mock.AddressDAOImpl;
 import com.java.automation.lab.fall.cehanovich.core22.domain.enums.City;
 
 import java.util.List;
 
-public class AddressService {
-    private static final AddressDAO DAO = AddressDAOImpl.getInstance();
+public class AddressService extends BaseService{
+    private static final AddressDAO DAO = ADDRESS_DAO_MAP.get(PROPS.getValue(PropertyConstant.ENV_KEY));
 
 
     public static Address createAddress(City city, String street, int house, int apartment) {
-        return DAO.create(city, street, house, apartment);
+        return DAO.create(new Address(city, street, house, apartment));
     }
 
     public static Address getAddressById(Long id) {
@@ -28,7 +29,7 @@ public class AddressService {
     }
 
     public static void deleteById(Long id) {
-        DAO.delete(id);
+        DAO.deleteById(id);
     }
 
 }

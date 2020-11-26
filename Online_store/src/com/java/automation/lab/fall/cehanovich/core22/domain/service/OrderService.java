@@ -1,18 +1,19 @@
 package com.java.automation.lab.fall.cehanovich.core22.domain.service;
 
 import com.java.automation.lab.fall.cehanovich.core22.domain.classes.*;
+import com.java.automation.lab.fall.cehanovich.core22.domain.constant.PropertyConstant;
 import com.java.automation.lab.fall.cehanovich.core22.domain.dao.OrderDAO;
-import com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.OrderDAOImpl;
+import com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.mock.OrderDAOImpl;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-public class OrderService {
-    private static final OrderDAO DAO = OrderDAOImpl.getInstance();
+public class OrderService extends BaseService{
+    private static final OrderDAO DAO = ORDER_DAO_MAP.get(PROPS.getValue(PropertyConstant.ENV_KEY));
 
 
-    public static Order createOrder(Basket basket, String description, BigDecimal tax) {
-        return DAO.create(basket, description, tax);
+    public static Order createOrder(int id, Basket basket, String description, BigDecimal tax) {
+        return DAO.create(new Order(id, basket, description, tax));
     }
 
     public static Order getOrderById(Long id) {
@@ -28,6 +29,6 @@ public class OrderService {
     }
 
     public static void deleteById(Long id) {
-        DAO.delete(id);
+        DAO.deleteById(id);
     }
 }

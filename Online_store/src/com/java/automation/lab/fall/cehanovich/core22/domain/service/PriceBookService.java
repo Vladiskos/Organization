@@ -2,8 +2,9 @@ package com.java.automation.lab.fall.cehanovich.core22.domain.service;
 
 import com.java.automation.lab.fall.cehanovich.core22.domain.classes.PriceBook;
 import com.java.automation.lab.fall.cehanovich.core22.domain.classes.Variation;
+import com.java.automation.lab.fall.cehanovich.core22.domain.constant.PropertyConstant;
 import com.java.automation.lab.fall.cehanovich.core22.domain.dao.PriceBookDAO;
-import com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.PriceBookDAOImpl;
+import com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.mock.PriceBookDAOImpl;
 import com.java.automation.lab.fall.cehanovich.core22.domain.enums.Currency;
 
 import java.math.BigDecimal;
@@ -11,12 +12,12 @@ import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Map;
 
-public class PriceBookService {
-    private static final PriceBookDAO DAO = PriceBookDAOImpl.getInstance();
+public class PriceBookService extends BaseService{
+    private static final PriceBookDAO DAO = PRICE_BOOK_DAO_MAP.get(PROPS.getValue(PropertyConstant.ENV_KEY));
 
     public static PriceBook createPriceBook(Currency currency, boolean enabled, OffsetDateTime validFrom,
                                             OffsetDateTime validTo, Map<Variation, BigDecimal> priceAndProduct) {
-        return DAO.create(currency, enabled, validFrom, validTo, priceAndProduct);
+        return DAO.create(new PriceBook(currency, enabled, validFrom, validTo, priceAndProduct));
     }
 
     public static PriceBook getPriceBookById(Long id) {
@@ -32,6 +33,6 @@ public class PriceBookService {
     }
 
     public static void deleteById(Long id) {
-        DAO.delete(id);
+        DAO.deleteById(id);
     }
 }

@@ -1,10 +1,11 @@
-package com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl;
+package com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.clazz;
 
-import com.java.automation.lab.fall.cehanovich.core22.domain.classes.*;
+import com.java.automation.lab.fall.cehanovich.core22.domain.classes.BankCard;
+import com.java.automation.lab.fall.cehanovich.core22.domain.constant.IOConstant;
 import com.java.automation.lab.fall.cehanovich.core22.domain.dao.BankCardDAO;
 import com.java.automation.lab.fall.cehanovich.core22.domain.exception.NotImplementedException;
+import com.java.automation.lab.fall.cehanovich.core22.domain.io.ObjectIO;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 public class BankCardDAOImpl implements BankCardDAO {
@@ -24,6 +25,7 @@ public class BankCardDAOImpl implements BankCardDAO {
 
     @Override
     public synchronized BankCard create(BankCard bankCard) {
+        new ObjectIO<BankCard>().write(bankCard, IOConstant.RQ_PATH);
         return bankCard;
     }
 
@@ -40,7 +42,7 @@ public class BankCardDAOImpl implements BankCardDAO {
 
     @Override
     public BankCard getById(Long id) {
-        throw new NotImplementedException("Method 'getById' not implemented for " + this.getClass());
+        return new ObjectIO<BankCard>().read(IOConstant.RQ_PATH);
     }
 
     @Override

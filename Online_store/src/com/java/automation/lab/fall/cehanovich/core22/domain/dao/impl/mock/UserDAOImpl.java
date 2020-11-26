@@ -1,11 +1,8 @@
-package com.java.automation.lab.fall.cehanovich.core22.domain.dao.classs;
+package com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.mock;
 
-import com.java.automation.lab.fall.cehanovich.core22.domain.classes.Address;
-import com.java.automation.lab.fall.cehanovich.core22.domain.classes.User;
-import com.java.automation.lab.fall.cehanovich.core22.domain.constant.IOConstant;
-import com.java.automation.lab.fall.cehanovich.core22.domain.dao.UserDAO;
+import com.java.automation.lab.fall.cehanovich.core22.domain.classes.*;
 import com.java.automation.lab.fall.cehanovich.core22.domain.exception.NotImplementedException;
-import com.java.automation.lab.fall.cehanovich.core22.domain.io.ObjectIO;
+import com.java.automation.lab.fall.cehanovich.core22.domain.dao.UserDAO;
 
 import java.util.List;
 
@@ -25,7 +22,6 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public synchronized User create(User user) {
-        new ObjectIO<User>().write(user, IOConstant.RQ_PATH);
         return user;
     }
 
@@ -37,7 +33,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User getById(Long id) {
-        return new ObjectIO<User>().read(IOConstant.RQ_PATH);
+        throw new NotImplementedException("Method 'getById' not implemented for " + this.getClass());
     }
 
     @Override

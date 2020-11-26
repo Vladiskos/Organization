@@ -1,19 +1,20 @@
 package com.java.automation.lab.fall.cehanovich.core22.domain.service;
 
 import com.java.automation.lab.fall.cehanovich.core22.domain.classes.*;
+import com.java.automation.lab.fall.cehanovich.core22.domain.constant.PropertyConstant;
 import com.java.automation.lab.fall.cehanovich.core22.domain.dao.ShippingInfoDAO;
-import com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.ShippingInfoDAOImpl;
+import com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.mock.ShippingInfoDAOImpl;
 import com.java.automation.lab.fall.cehanovich.core22.domain.classes.info.ShippingInfo;
 
 import java.time.OffsetDateTime;
 import java.util.List;
 
-public class ShippingInfoService {
-    private static final ShippingInfoDAO DAO = ShippingInfoDAOImpl.getInstance();
+public class ShippingInfoService extends BaseService{
+    private static final ShippingInfoDAO DAO = SHIPPING_INFO_DAO_MAP.get(PROPS.getValue(PropertyConstant.ENV_KEY));
 
 
     public static ShippingInfo createShippingInfo(OffsetDateTime date, Address address, User customerInfo) {
-        return DAO.create(date, address, customerInfo);
+        return DAO.create(new ShippingInfo(date, address, customerInfo));
     }
 
     public static ShippingInfo getShippingInfoById(Long id) {
@@ -29,6 +30,6 @@ public class ShippingInfoService {
     }
 
     public static void deleteById(Long id) {
-        DAO.delete(id);
+        DAO.deleteById(id);
     }
 }

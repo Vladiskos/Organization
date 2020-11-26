@@ -1,10 +1,9 @@
-package com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl;
+package com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.mock;
 
 import com.java.automation.lab.fall.cehanovich.core22.domain.classes.*;
 import com.java.automation.lab.fall.cehanovich.core22.domain.exception.NotImplementedException;
 import com.java.automation.lab.fall.cehanovich.core22.domain.dao.BasketDAO;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 public class BasketDAOImpl implements BasketDAO{

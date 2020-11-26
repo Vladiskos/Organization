@@ -1,15 +1,12 @@
-package com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl;
+package com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.clazz;
 
 import com.java.automation.lab.fall.cehanovich.core22.domain.classes.PriceBook;
-import com.java.automation.lab.fall.cehanovich.core22.domain.classes.Variation;
-import com.java.automation.lab.fall.cehanovich.core22.domain.exception.NotImplementedException;
-import com.java.automation.lab.fall.cehanovich.core22.domain.enums.Currency;
+import com.java.automation.lab.fall.cehanovich.core22.domain.constant.IOConstant;
 import com.java.automation.lab.fall.cehanovich.core22.domain.dao.PriceBookDAO;
+import com.java.automation.lab.fall.cehanovich.core22.domain.exception.NotImplementedException;
+import com.java.automation.lab.fall.cehanovich.core22.domain.io.ObjectIO;
 
-import java.math.BigDecimal;
-import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Map;
 
 public class PriceBookDAOImpl implements PriceBookDAO {
     private static PriceBookDAOImpl instance;
@@ -27,6 +24,7 @@ public class PriceBookDAOImpl implements PriceBookDAO {
 
     @Override
     public synchronized PriceBook create(PriceBook priceBook) {
+        new ObjectIO<PriceBook>().write(priceBook, IOConstant.RQ_PATH);
         return priceBook;
     }
 
@@ -38,7 +36,7 @@ public class PriceBookDAOImpl implements PriceBookDAO {
 
     @Override
     public PriceBook getById(Long id) {
-        throw new NotImplementedException("Method 'getById' not implemented for " + this.getClass());
+        return new ObjectIO<PriceBook>().read(IOConstant.RQ_PATH);
     }
 
     @Override

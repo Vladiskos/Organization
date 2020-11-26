@@ -1,11 +1,12 @@
-package com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl;
+package com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.clazz;
 
-import com.java.automation.lab.fall.cehanovich.core22.domain.classes.*;
+import com.java.automation.lab.fall.cehanovich.core22.domain.classes.Subcategory;
+import com.java.automation.lab.fall.cehanovich.core22.domain.constant.IOConstant;
 import com.java.automation.lab.fall.cehanovich.core22.domain.dao.SubcategoryDAO;
 import com.java.automation.lab.fall.cehanovich.core22.domain.exception.NotImplementedException;
+import com.java.automation.lab.fall.cehanovich.core22.domain.io.ObjectIO;
 
 import java.util.List;
-import java.util.Set;
 
 public class SubcategoryDAOImpl implements SubcategoryDAO {
     private static SubcategoryDAOImpl instance;
@@ -23,6 +24,7 @@ public class SubcategoryDAOImpl implements SubcategoryDAO {
 
     @Override
     public synchronized Subcategory create(Subcategory subcategory) {
+        new ObjectIO<Subcategory>().write(subcategory, IOConstant.RQ_PATH);
         return subcategory;
     }
 
@@ -34,7 +36,7 @@ public class SubcategoryDAOImpl implements SubcategoryDAO {
 
     @Override
     public Subcategory getById(Long id) {
-        throw new NotImplementedException("Method 'getById' not implemented for " + this.getClass());
+        return new ObjectIO<Subcategory>().read(IOConstant.RQ_PATH);
     }
 
     @Override

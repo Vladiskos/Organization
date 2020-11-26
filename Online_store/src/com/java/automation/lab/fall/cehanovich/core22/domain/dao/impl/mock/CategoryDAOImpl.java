@@ -1,11 +1,8 @@
-package com.java.automation.lab.fall.cehanovich.core22.domain.dao.classs;
+package com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.mock;
 
-import com.java.automation.lab.fall.cehanovich.core22.domain.classes.Address;
 import com.java.automation.lab.fall.cehanovich.core22.domain.classes.Category;
-import com.java.automation.lab.fall.cehanovich.core22.domain.constant.IOConstant;
 import com.java.automation.lab.fall.cehanovich.core22.domain.dao.CategoryDAO;
 import com.java.automation.lab.fall.cehanovich.core22.domain.exception.NotImplementedException;
-import com.java.automation.lab.fall.cehanovich.core22.domain.io.ObjectIO;
 
 import java.util.List;
 
@@ -25,7 +22,6 @@ public class CategoryDAOImpl implements CategoryDAO {
 
     @Override
     public synchronized Category create(Category category) {
-        new ObjectIO<Category>().write(category, IOConstant.RQ_PATH);
         return category;
     }
 
@@ -36,7 +32,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 
     @Override
     public Category getById(Long id) {
-        return new ObjectIO<Category>().read(IOConstant.RQ_PATH);
+        throw new NotImplementedException("Method 'getById' not implemented for " + this.getClass());
     }
 
     @Override

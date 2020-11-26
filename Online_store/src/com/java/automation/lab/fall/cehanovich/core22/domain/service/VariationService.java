@@ -1,19 +1,20 @@
 package com.java.automation.lab.fall.cehanovich.core22.domain.service;
 
 import com.java.automation.lab.fall.cehanovich.core22.domain.classes.*;
+import com.java.automation.lab.fall.cehanovich.core22.domain.constant.PropertyConstant;
 import com.java.automation.lab.fall.cehanovich.core22.domain.dao.VariationDAO;
-import com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.VariationDAOImpl;
+import com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.mock.VariationDAOImpl;
 import com.java.automation.lab.fall.cehanovich.core22.domain.enums.Color;
 import com.java.automation.lab.fall.cehanovich.core22.domain.enums.Size;
 
 import java.util.List;
 
-public class VariationService {
-    private static final VariationDAO DAO = VariationDAOImpl.getInstance();
+public class VariationService extends BaseService{
+    private static final VariationDAO DAO = VARIATION_DAO_MAP.get(PROPS.getValue(PropertyConstant.ENV_KEY));
 
 
     public static Variation createVariation(int id, Size size, Color color, Product product, int discount) {
-        return DAO.create(id, size, color, product, discount);
+        return DAO.create(new Variation(id, size, color, product, discount));
     }
 
     public static Variation getVariationById(Long id) {
@@ -29,6 +30,6 @@ public class VariationService {
     }
 
     public static void deleteById(Long id) {
-        DAO.delete(id);
+        DAO.deleteById(id);
     }
 }

@@ -1,11 +1,8 @@
-package com.java.automation.lab.fall.cehanovich.core22.domain.dao.classs;
+package com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.mock;
 
-import com.java.automation.lab.fall.cehanovich.core22.domain.classes.Address;
 import com.java.automation.lab.fall.cehanovich.core22.domain.classes.PriceBook;
-import com.java.automation.lab.fall.cehanovich.core22.domain.constant.IOConstant;
-import com.java.automation.lab.fall.cehanovich.core22.domain.dao.PriceBookDAO;
 import com.java.automation.lab.fall.cehanovich.core22.domain.exception.NotImplementedException;
-import com.java.automation.lab.fall.cehanovich.core22.domain.io.ObjectIO;
+import com.java.automation.lab.fall.cehanovich.core22.domain.dao.PriceBookDAO;
 
 import java.util.List;
 
@@ -25,7 +22,6 @@ public class PriceBookDAOImpl implements PriceBookDAO {
 
     @Override
     public synchronized PriceBook create(PriceBook priceBook) {
-        new ObjectIO<PriceBook>().write(priceBook, IOConstant.RQ_PATH);
         return priceBook;
     }
 
@@ -37,7 +33,7 @@ public class PriceBookDAOImpl implements PriceBookDAO {
 
     @Override
     public PriceBook getById(Long id) {
-        return new ObjectIO<PriceBook>().read(IOConstant.RQ_PATH);
+        throw new NotImplementedException("Method 'getById' not implemented for " + this.getClass());
     }
 
     @Override

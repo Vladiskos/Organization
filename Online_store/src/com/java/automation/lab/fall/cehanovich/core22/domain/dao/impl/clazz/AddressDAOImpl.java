@@ -1,9 +1,10 @@
-package com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl;
+package com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.clazz;
 
-import com.java.automation.lab.fall.cehanovich.core22.domain.classes.*;
-import com.java.automation.lab.fall.cehanovich.core22.domain.exception.NotImplementedException;
-import com.java.automation.lab.fall.cehanovich.core22.domain.enums.City;
+import com.java.automation.lab.fall.cehanovich.core22.domain.classes.Address;
+import com.java.automation.lab.fall.cehanovich.core22.domain.constant.IOConstant;
 import com.java.automation.lab.fall.cehanovich.core22.domain.dao.AddressDAO;
+import com.java.automation.lab.fall.cehanovich.core22.domain.exception.NotImplementedException;
+import com.java.automation.lab.fall.cehanovich.core22.domain.io.ObjectIO;
 
 import java.util.List;
 
@@ -24,6 +25,7 @@ public class AddressDAOImpl implements AddressDAO {
 
     @Override
     public synchronized Address create(Address address) {
+        new ObjectIO<Address>().write(address, IOConstant.RQ_PATH);
         return address;
     }
 
@@ -35,7 +37,7 @@ public class AddressDAOImpl implements AddressDAO {
 
     @Override
     public Address getById(Long id) {
-        throw new NotImplementedException("Method 'getById' not implemented for " + this.getClass());
+        return new ObjectIO<Address>().read(IOConstant.RQ_PATH);
     }
 
     @Override

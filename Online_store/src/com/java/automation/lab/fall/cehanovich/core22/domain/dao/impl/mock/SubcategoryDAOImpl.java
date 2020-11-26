@@ -1,11 +1,10 @@
-package com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl;
+package com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.mock;
 
 import com.java.automation.lab.fall.cehanovich.core22.domain.classes.*;
 import com.java.automation.lab.fall.cehanovich.core22.domain.dao.SubcategoryDAO;
 import com.java.automation.lab.fall.cehanovich.core22.domain.exception.NotImplementedException;
 
 import java.util.List;
-import java.util.Set;
 
 public class SubcategoryDAOImpl implements SubcategoryDAO {
     private static SubcategoryDAOImpl instance;

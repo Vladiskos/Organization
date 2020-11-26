@@ -1,17 +1,18 @@
 package com.java.automation.lab.fall.cehanovich.core22.domain.service;
 
 import com.java.automation.lab.fall.cehanovich.core22.domain.classes.*;
+import com.java.automation.lab.fall.cehanovich.core22.domain.constant.PropertyConstant;
 import com.java.automation.lab.fall.cehanovich.core22.domain.dao.UserDAO;
-import com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.UserDAOImpl;
+import com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.mock.UserDAOImpl;
 
 import java.util.List;
 
-public class UserService {
-    private static final UserDAO DAO = UserDAOImpl.getInstance();
+public class UserService extends BaseService{
+    private static final UserDAO DAO = USER_DAO_MAP.get(PROPS.getValue(PropertyConstant.ENV_KEY));
 
 
     public static User createUser(int id, String firstname, String lastname, String contactNumber, String email) {
-        return DAO.create(id, firstname, lastname, contactNumber, email);
+        return DAO.create(new User(id, firstname, lastname, contactNumber, email));
     }
 
     public static User getUserById(Long id) {
@@ -27,6 +28,6 @@ public class UserService {
     }
 
     public static void deleteById(Long id) {
-        DAO.delete(id);
+        DAO.deleteById(id);
     }
 }

@@ -1,4 +1,4 @@
-package com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl;
+package com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.mock;
 
 import com.java.automation.lab.fall.cehanovich.core22.domain.classes.*;
 import com.java.automation.lab.fall.cehanovich.core22.domain.exception.NotImplementedException;

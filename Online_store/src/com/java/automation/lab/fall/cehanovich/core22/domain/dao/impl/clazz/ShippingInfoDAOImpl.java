@@ -1,11 +1,11 @@
-package com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl;
+package com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.clazz;
 
-import com.java.automation.lab.fall.cehanovich.core22.domain.classes.*;
+import com.java.automation.lab.fall.cehanovich.core22.domain.classes.info.ShippingInfo;
+import com.java.automation.lab.fall.cehanovich.core22.domain.constant.IOConstant;
 import com.java.automation.lab.fall.cehanovich.core22.domain.dao.ShippingInfoDAO;
 import com.java.automation.lab.fall.cehanovich.core22.domain.exception.NotImplementedException;
-import com.java.automation.lab.fall.cehanovich.core22.domain.classes.info.ShippingInfo;
+import com.java.automation.lab.fall.cehanovich.core22.domain.io.ObjectIO;
 
-import java.time.OffsetDateTime;
 import java.util.List;
 
 public class ShippingInfoDAOImpl implements ShippingInfoDAO {
@@ -24,6 +24,7 @@ public class ShippingInfoDAOImpl implements ShippingInfoDAO {
 
     @Override
     public synchronized ShippingInfo create(ShippingInfo shippingInfo) {
+        new ObjectIO<ShippingInfo>().write(shippingInfo, IOConstant.RQ_PATH);
         return shippingInfo;
     }
 
@@ -35,7 +36,7 @@ public class ShippingInfoDAOImpl implements ShippingInfoDAO {
 
     @Override
     public ShippingInfo getById(Long id) {
-        throw new NotImplementedException("Method 'getById' not implemented for " + this.getClass());
+        return new ObjectIO<ShippingInfo>().read(IOConstant.RQ_PATH);
     }
 
     @Override

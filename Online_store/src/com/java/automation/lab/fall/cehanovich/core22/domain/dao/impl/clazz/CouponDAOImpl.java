@@ -1,9 +1,10 @@
-package com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl;
+package com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.clazz;
 
 import com.java.automation.lab.fall.cehanovich.core22.domain.classes.Coupon;
+import com.java.automation.lab.fall.cehanovich.core22.domain.constant.IOConstant;
 import com.java.automation.lab.fall.cehanovich.core22.domain.dao.CouponDAO;
-import com.java.automation.lab.fall.cehanovich.core22.domain.enums.Color;
 import com.java.automation.lab.fall.cehanovich.core22.domain.exception.NotImplementedException;
+import com.java.automation.lab.fall.cehanovich.core22.domain.io.ObjectIO;
 
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class CouponDAOImpl implements CouponDAO {
 
     @Override
     public synchronized Coupon create(Coupon coupon) {
+        new ObjectIO<Coupon>().write(coupon, IOConstant.RQ_PATH);
         return coupon;
     }
 
@@ -33,7 +35,7 @@ public class CouponDAOImpl implements CouponDAO {
 
     @Override
     public Coupon getById(Long id) {
-        throw new NotImplementedException("Method 'getById' not implemented for " + this.getClass());
+        return new ObjectIO<Coupon>().read(IOConstant.RQ_PATH);
     }
 
     @Override

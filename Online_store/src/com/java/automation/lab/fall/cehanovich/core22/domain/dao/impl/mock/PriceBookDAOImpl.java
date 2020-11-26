@@ -1,15 +1,10 @@
-package com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl;
+package com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.mock;
 
 import com.java.automation.lab.fall.cehanovich.core22.domain.classes.PriceBook;
-import com.java.automation.lab.fall.cehanovich.core22.domain.classes.Variation;
 import com.java.automation.lab.fall.cehanovich.core22.domain.exception.NotImplementedException;
-import com.java.automation.lab.fall.cehanovich.core22.domain.enums.Currency;
 import com.java.automation.lab.fall.cehanovich.core22.domain.dao.PriceBookDAO;
 
-import java.math.BigDecimal;
-import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Map;
 
 public class PriceBookDAOImpl implements PriceBookDAO {
     private static PriceBookDAOImpl instance;

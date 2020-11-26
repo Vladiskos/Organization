@@ -1,14 +1,10 @@
-package com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl;
+package com.java.automation.lab.fall.cehanovich.core22.domain.dao.impl.mock;
 
-import com.java.automation.lab.fall.cehanovich.core22.domain.classes.Address;
-import com.java.automation.lab.fall.cehanovich.core22.domain.classes.BankCard;
 import com.java.automation.lab.fall.cehanovich.core22.domain.classes.RegisteredUser;
 import com.java.automation.lab.fall.cehanovich.core22.domain.dao.RegisteredUserDAO;
 import com.java.automation.lab.fall.cehanovich.core22.domain.exception.NotImplementedException;
 
-import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 public class RegisteredUserDAOImpl implements RegisteredUserDAO {
     private static RegisteredUserDAOImpl instance;
